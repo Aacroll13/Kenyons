@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Corn Price Shocks &amp; Preparedness — Kenyon's Grist Mill</title>
+<style>
+  :root{--ink:#2b2620;--muted:#7a6f60;--line:#ddd3c4;--bg:#faf7f1;--panel:#fffdf9;
+        --gold:#a9761c;--green:#4a6b3f;--red:#9c4a34;--amber:#b5852a;--slate:#4a5a63;}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+       font:16.5px/1.62 Georgia,'Iowan Old Style',serif;padding:40px 20px 90px}
+  .wrap{max-width:900px;margin:0 auto}
+  header{border-bottom:3px double var(--line);padding-bottom:22px;margin-bottom:34px}
+  h1{font-size:33px;margin:0 0 8px;letter-spacing:-.4px;line-height:1.2}
+  .sub{color:var(--muted);font-size:15px;font-style:italic}
+  h2{font-size:14px;text-transform:uppercase;letter-spacing:1.8px;color:var(--gold);
+     margin:52px 0 6px;padding-bottom:7px;border-bottom:1px solid var(--line)}
+  h3{font-size:19px;margin:30px 0 6px}
+  p{margin:0 0 15px}
+  .lede{font-size:18px;color:#3a352d}
+  figure{margin:30px 0 34px;background:var(--panel);border:1px solid var(--line);
+         border-radius:6px;padding:20px 22px 16px}
+  figcaption{font-size:13px;color:var(--muted);font-style:italic;margin-top:12px;
+             padding-top:10px;border-top:1px dashed var(--line);line-height:1.5}
+  svg{display:block;width:100%;height:auto}
+  table{width:100%;border-collapse:collapse;margin:22px 0;font-size:14.5px}
+  th{text-align:left;font-size:11.5px;text-transform:uppercase;letter-spacing:1px;
+     color:var(--muted);border-bottom:2px solid var(--line);padding:9px 10px 8px;
+     font-family:system-ui,sans-serif;font-weight:600}
+  td{padding:11px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+  tr:last-child td{border-bottom:none}
+  .tag{display:inline-block;font-size:10.5px;text-transform:uppercase;letter-spacing:.9px;
+       padding:2.5px 8px;border-radius:3px;font-family:system-ui,sans-serif;font-weight:600}
+  .supply{background:#f6e9e5;color:var(--red)}
+  .demand{background:#e8f0e4;color:var(--green)}
+  .macro{background:#e6ebee;color:var(--slate)}
+  .policy{background:#f7efdd;color:var(--amber)}
+  .box{background:var(--panel);border-left:4px solid var(--gold);padding:18px 22px;
+       margin:26px 0;border-radius:0 5px 5px 0}
+  .box strong{color:var(--gold)}
+  .warn{border-left-color:var(--red)} .warn strong{color:var(--red)}
+  .num{font-variant-numeric:tabular-nums}
+  ol li,ul li{margin-bottom:9px}
+  code{background:#f1ebe0;padding:1.5px 6px;border-radius:3px;font-size:14px}
+  footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--line);
+         font-size:13.5px;color:var(--muted)}
+  @media print{body{background:#fff;padding:0}figure{break-inside:avoid}}
+</style>
+</head>
+<body><div class="wrap">
+
+<header>
+  <h1>Corn Price Shocks &amp; Preparedness</h1>
+  <div class="sub">Twenty years of what moved the market, why, and how a family mill gets ready
+  &middot; Companion to the main analysis &middot; <strong>Revised 25 September 2026</strong></div>
+</header>
+
+<p class="lede">Corn does not drift. It sits still for years and then moves 60% in six months.
+Every one of those moves in the past twenty years fits into one of four categories &mdash;
+supply, demand, macro, or policy &mdash; and <strong>the category tells you how much warning
+you get.</strong> That is the practical content of this section. A drought gives you eight
+weeks. A policy change gives you eighteen months. Only one of those is enough time to go
+buy grain.</p>
+
+<!-- ================= FIGURE 1 ================= -->
+<h2>I &middot; Twenty Years of Price</h2>
+
+<figure>
+<svg viewBox="0 0 880 400" xmlns="http://www.w3.org/2000/svg" font-family="Georgia, serif">
+  <!-- shock bands -->
+  <rect x="88"  y="40" width="45" height="290" fill="#a9761c" opacity=".10"/>
+  <rect x="160" y="40" width="40" height="290" fill="#4a5a63" opacity=".10"/>
+  <rect x="269" y="40" width="72" height="290" fill="#9c4a34" opacity=".11"/>
+  <rect x="595" y="40" width="40" height="290" fill="#4a5a63" opacity=".10"/>
+  <rect x="667" y="40" width="36" height="290" fill="#4a5a63" opacity=".10"/>
+  <rect x="739" y="40" width="55" height="290" fill="#9c4a34" opacity=".11"/>
+
+  <!-- gridlines -->
+  <g stroke="#ddd3c4" stroke-width="1">
+    <line x1="70" y1="330" x2="840" y2="330"/>
+    <line x1="70" y1="252.7" x2="840" y2="252.7"/>
+    <line x1="70" y1="175.3" x2="840" y2="175.3"/>
+    <line x1="70" y1="98" x2="840" y2="98"/>
+  </g>
+  <g fill="#7a6f60" font-size="11" text-anchor="end">
+    <text x="62" y="334">$0</text><text x="62" y="256.7">$2</text>
+    <text x="62" y="179.3">$4</text><text x="62" y="102">$6</text>
+  </g>
+
+  <!-- price line -->
+  <polyline fill="none" stroke="#a9761c" stroke-width="2.6" stroke-linejoin="round"
+    points="70,252.7 106.2,212.4 142.4,167.6 178.6,173 214.8,192.7 251,129.7 287.1,89.5
+            323.3,63.6 359.5,157.5 395.7,186.9 431.9,190.4 468.1,200.1 504.3,200.1
+            540.5,190.4 576.7,192.3 612.9,154.8 649,98 685.2,77.1 721.4,154.1
+            757.6,161.8 793.8,119.3 830,144.4"/>
+  <g fill="#a9761c">
+    <circle cx="70" cy="252.7" r="3.4"/><circle cx="106.2" cy="212.4" r="3.4"/>
+    <circle cx="142.4" cy="167.6" r="3.4"/><circle cx="178.6" cy="173" r="3.4"/>
+    <circle cx="214.8" cy="192.7" r="3.4"/><circle cx="251" cy="129.7" r="3.4"/>
+    <circle cx="287.1" cy="89.5" r="3.4"/><circle cx="323.3" cy="63.6" r="4.6"/>
+    <circle cx="359.5" cy="157.5" r="3.4"/><circle cx="395.7" cy="186.9" r="3.4"/>
+    <circle cx="431.9" cy="190.4" r="3.4"/><circle cx="468.1" cy="200.1" r="3.4"/>
+    <circle cx="504.3" cy="200.1" r="3.4"/><circle cx="540.5" cy="190.4" r="3.4"/>
+    <circle cx="576.7" cy="192.3" r="3.4"/><circle cx="612.9" cy="154.8" r="3.4"/>
+    <circle cx="649" cy="98" r="3.4"/><circle cx="685.2" cy="77.1" r="3.4"/>
+    <circle cx="721.4" cy="154.1" r="3.4"/><circle cx="757.6" cy="161.8" r="3.4"/>
+    <circle cx="793.8" cy="119.3" r="3.4"/>
+  </g>
+  <circle cx="830" cy="144.4" r="5.6" fill="#9c4a34" stroke="#fff" stroke-width="1.8"/>
+
+  <!-- annotations -->
+  <g font-size="11" fill="#9c4a34" font-style="italic">
+    <text x="323" y="52" text-anchor="middle">2012 drought &mdash; $6.89</text>
+  </g>
+  <g font-size="11" fill="#4a5a63" font-style="italic">
+    <text x="700" y="66" text-anchor="middle">Ukraine &mdash; $6.54</text>
+    <text x="142" y="152" text-anchor="middle">RFS build-out</text>
+  </g>
+  <g font-size="11" fill="#4a6b3f" font-style="italic">
+    <text x="486" y="222" text-anchor="middle">supply response overshoots &mdash; $3.36</text>
+  </g>
+  <text x="836" y="124" font-size="11" fill="#9c4a34" text-anchor="end" font-weight="bold">
+    Sept 2026: $4.80</text>
+  <text x="836" y="137" font-size="10" fill="#9c4a34" text-anchor="end" font-style="italic">
+    SUR 9.7%</text>
+
+  <!-- x labels -->
+  <g fill="#7a6f60" font-size="10.5" text-anchor="middle">
+    <text x="70" y="350">2005</text><text x="251" y="350">2010</text>
+    <text x="431.9" y="350">2015</text><text x="612.9" y="350">2020</text>
+    <text x="793.8" y="350">2025</text>
+  </g>
+
+  <!-- legend -->
+  <g font-size="11" fill="#7a6f60">
+    <rect x="70" y="372" width="14" height="10" fill="#9c4a34" opacity=".35"/>
+    <text x="90" y="381">Supply</text>
+    <rect x="150" y="372" width="14" height="10" fill="#4a6b3f" opacity=".35"/>
+    <text x="170" y="381">Demand</text>
+    <rect x="235" y="372" width="14" height="10" fill="#4a5a63" opacity=".35"/>
+    <text x="255" y="381">Macro</text>
+    <rect x="310" y="372" width="14" height="10" fill="#a9761c" opacity=".35"/>
+    <text x="330" y="381">Policy</text>
+  </g>
+</svg>
+<figcaption><strong>Figure 1.</strong> USDA season-average farm price, marketing years
+2005/06 through 2026/27 (2026 is the July 2026 WASDE projection). Shaded bands mark the
+shock periods catalogued below. Note the shape: two tall spikes separated by a long,
+grinding, five-year decline. That decline is the supply response, and it is as reliable
+as the spike.</figcaption>
+</figure>
+
+<!-- ================= THE CHRONOLOGY ================= -->
+<h2>II &middot; The Chronology</h2>
+
+<table>
+<thead><tr><th style="width:78px">Period</th><th style="width:86px">Type</th>
+<th>What happened, and what it did</th><th style="width:82px">Warning</th></tr></thead>
+<tbody>
+
+<tr><td class="num"><strong>2005&ndash;07</strong></td><td><span class="tag policy">Policy</span></td>
+<td><strong>The RFS build-out.</strong> The Energy Policy Act of 2005 and EISA 2007 created a
+mandated, price-inelastic demand block where none existed. Season-average price went from
+<span class="num">$2.00</span> (2005/06) to <span class="num">$4.20</span> (2007/08). This was
+not a spike &mdash; it was a <em>permanent level shift</em>, and prices never returned to the
+old base. Roughly a third of the U.S. crop was rerouted into fuel.</td>
+<td class="num">18&ndash;36 mo</td></tr>
+
+<tr><td class="num"><strong>2008</strong></td><td><span class="tag macro">Macro</span></td>
+<td><strong>Global food crisis and the commodity peak.</strong> A weak dollar, $147 crude, and
+a broad speculative supercycle carried nearby futures to about <span class="num">$7.65/bu</span>
+in June 2008 &mdash; a record at the time. The financial crisis then erased it within months.
+Corn had become a macro asset, not just a feed grain.</td>
+<td class="num">3&ndash;6 mo</td></tr>
+
+<tr><td class="num"><strong>2010&ndash;11</strong></td><td><span class="tag demand">Demand</span></td>
+<td><strong>Tight stocks meet strong demand.</strong> Stocks-to-use fell to roughly 7.9%.
+Futures matched and then exceeded the 2008 high. Season-average price
+<span class="num">$6.22</span>. The convexity of the stocks curve did the work &mdash; a small
+stock decline produced a large price move.</td>
+<td class="num">6&ndash;12 mo</td></tr>
+
+<tr><td class="num"><strong>2012</strong></td><td><span class="tag supply">Supply</span></td>
+<td><strong>The drought.</strong> Worst U.S. drought in fifty years. Futures reached roughly
+<span class="num">$8.24/bu</span> on 10 August 2012 &mdash; the record nominal high, surpassing
+2008's $7.65. Stocks-to-use collapsed to about 7.4%; season-average price
+<span class="num">$6.89</span>. The monthly average nearby futures price rose 33% between May
+and August alone.</td>
+<td class="num">6&ndash;10 wks</td></tr>
+
+<tr><td class="num"><strong>2013&ndash;16</strong></td><td><span class="tag supply">Supply</span></td>
+<td><strong>The supply response, and the overshoot.</strong> Global acreage surged, yields
+recovered, and Brazil's <em>safrinha</em> second crop matured into a major export force. Price
+ground down for five consecutive years to <span class="num">$3.36</span> in 2016/17 &mdash;
+below the 2007 level. <strong>The single most important pattern in this table:</strong> high
+prices are self-correcting on a two-to-four-year lag, and the correction goes too far.</td>
+<td class="num">2&ndash;4 yrs</td></tr>
+
+<tr><td class="num"><strong>2019</strong></td><td><span class="tag supply">Supply</span></td>
+<td><strong>Prevented planting.</strong> A historically wet spring left millions of acres
+unplanted. A sharp but short-lived rally &mdash; a useful reminder that planting-season weather
+matters as much as pollination weather.</td>
+<td class="num">4&ndash;8 wks</td></tr>
+
+<tr><td class="num"><strong>2020 (spring)</strong></td><td><span class="tag macro">Macro</span></td>
+<td><strong>COVID demand collapse.</strong> Gasoline demand fell off a cliff and took the
+ethanol grind with it &mdash; a third of demand impaired in weeks. Corn fell to the low
+<span class="num">$3.00s</span> by April. The fastest demand shock in the modern record, and it
+arrived with essentially no warning.</td>
+<td class="num">&lt; 4 wks</td></tr>
+
+<tr><td class="num"><strong>2020 (Aug)</strong></td><td><span class="tag supply">Supply</span></td>
+<td><strong>The Iowa derecho.</strong> A single storm flattened millions of acres in hours,
+just as China began an unprecedented buying programme to rebuild its swine herd after African
+swine fever. Two shocks of opposite sign, four months apart.</td>
+<td class="num">0 &mdash; none</td></tr>
+
+<tr><td class="num"><strong>2021</strong></td><td><span class="tag demand">Demand</span></td>
+<td><strong>The post-COVID rally.</strong> Chinese import demand, stimulus, freight chaos, and
+Northern Hemisphere drought. Highest prices since 2013; season-average
+<span class="num">$6.00</span>. Notably, China turned to Ukraine for a third of its corn imports
+&mdash; a fact that mattered enormously twelve months later.</td>
+<td class="num">6&ndash;12 mo</td></tr>
+
+<tr><td class="num"><strong>2022</strong></td><td><span class="tag macro">Macro</span></td>
+<td><strong>Russia invades Ukraine.</strong> 24 February 2022. Ukraine supplied roughly
+<strong>14% of world maize exports</strong>. Futures spiked toward the 2012 record within eight
+weeks; season-average price <span class="num">$6.54</span>. Research since has found the futures
+move was partly herding &mdash; an overreaction &mdash; which is exactly what a buyer who already
+holds inventory can afford to ignore.</td>
+<td class="num">0 &mdash; none</td></tr>
+
+<tr><td class="num"><strong>2023&ndash;24</strong></td><td><span class="tag supply">Supply</span></td>
+<td><strong>Normalisation.</strong> The familiar overshoot again. Gulf FOB corn hit its lowest
+level since September 2020 in August 2024; national cash corn reached about
+<span class="num">$3.87</span> by late September 2024.</td>
+<td class="num">1&ndash;2 yrs</td></tr>
+
+<tr><td class="num"><strong>2025</strong></td><td><span class="tag supply">Supply</span></td>
+<td><strong>The record crop.</strong> 98.7 million acres planted &mdash; the most in nearly nine
+decades &mdash; and a record <span class="num">186.5 bu/acre</span> yield producing
+<span class="num">16.8 billion bushels</span>. Stocks-to-use rebuilt to roughly 12.8%.</td>
+<td class="num">6&ndash;9 mo</td></tr>
+
+<tr><td class="num"><strong>2026<br>(H1)</strong></td><td><span class="tag demand">Demand</span></td>
+<td><strong>Export boom, quiet tightening.</strong> 2025/26 export sales ran about
+<strong>31% above the prior year</strong> against a USDA target of +12%, on pace for a record,
+with Mexico taking 18.8 MMT. The July 2026 WASDE cut ending stocks 170 million bushels to
+<span class="num">1.80 billion</span>. Price still low, but the direction had changed.</td>
+<td class="num">3&ndash;6 mo</td></tr>
+
+<tr style="background:#f6e9e5"><td class="num"><strong>2026<br>(Jun&ndash;Sep)</strong></td>
+<td><span class="tag supply">Supply</span></td>
+<td><strong>The drought rally &mdash; happening now.</strong> From a late-June low of
+<span class="num">$4.17</span>, September futures ran to a new high of
+<span class="num">$5.22</span> &mdash; <strong>+$1.05, or +25%, in nine weeks</strong>. Corn and
+wheat hit their highest levels in more than three years in late August, taking out the late-2023
+highs. December settled at <span class="num">$5.29</span> on 23 September.
+<br><br>Four causes, stacked: nearly <strong>30% of U.S. corn area</strong> under moderate-to-
+exceptional drought since late July, after a mid-July Midwest heat dome and warm August nights;
+the Pro Farmer Crop Tour scouting <strong>173.2 bu/acre</strong> against USDA's 178.5; EU, UK and
+Brazil production cut on prolonged summer heat during grain fill; and <strong>constrained
+Ukrainian exports</strong> pushing U.S. exports <em>up</em> 75 mn bu to 3.3 bn even as
+production fell.
+<br><br>The 11 September WASDE cut yield to 178.5, production to 15.80 bn, and ending stocks to
+<span class="num">1.567 bn &mdash; stocks-to-use 9.7%</span>, from 11.3% in July. Season-average
+farm price raised 30&cent; to <span class="num">$4.80</span>.</td>
+<td class="num"><strong>9 weeks</strong></td></tr>
+
+</tbody></table>
+
+<div class="box warn">
+<strong>This report's own July forecast, graded.</strong> The July draft concluded: <em>"a buying
+window closing slowly rather than one wide open."</em> It closed in nine weeks. The framework was
+right &mdash; it named weather as the category with the least warning, put the danger threshold at
+9% stocks-to-use, and said the convexity would bite below 10%. The <em>pacing</em> was wrong, and
+in the direction that costs money. Nine weeks is exactly the warning time the chronology assigns
+to a drought, which is the argument for holding inventory rather than holding a view.
+</div>
+
+<div class="box warn">
+<strong>The pattern that should govern policy at the mill.</strong> Look down the "warning"
+column. The two largest price events of the past twenty years &mdash; the 2012 drought and the
+2022 invasion &mdash; gave, respectively, about eight weeks and zero notice. In both cases, by
+the time the move was visible, the grain was no longer purchasable at the old price.
+<strong>Below roughly three months of warning, the only thing that protects a mill is grain it
+already owns.</strong> Everything else &mdash; forecasting, hedging, clever contracting &mdash;
+is a slower instrument than the shock.
+</div>
+
+<!-- ================= FIGURE 2 ================= -->
+<h2>III &middot; Why the Curve Bites</h2>
+
+<p>All of it compresses into one number: the stocks-to-use ratio. The relationship between
+stocks and price is not a line but a curve, steepening sharply as stocks fall. Fitting the
+standard reciprocal form to marketing years 2013&ndash;2026 gives
+<code>Price = 1.31 + 0.358 &times; (1/SUR)</code>, with R&sup2; &asymp; 0.40 and a residual
+standard error of about $0.80/bu.</p>
+
+<figure>
+<svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg" font-family="Georgia, serif">
+  <rect x="70" y="40" width="150.8" height="290" fill="#9c4a34" opacity=".07"/>
+  <g stroke="#ddd3c4" stroke-width="1">
+    <line x1="70" y1="330" x2="600" y2="330"/><line x1="70" y1="252.7" x2="600" y2="252.7"/>
+    <line x1="70" y1="175.3" x2="600" y2="175.3"/><line x1="70" y1="98" x2="600" y2="98"/>
+  </g>
+  <g fill="#7a6f60" font-size="11" text-anchor="end">
+    <text x="62" y="334">$0</text><text x="62" y="256.7">$2</text>
+    <text x="62" y="179.3">$4</text><text x="62" y="102">$6</text>
+  </g>
+  <polyline fill="none" stroke="#a9761c" stroke-width="2.6"
+    points="107.7,48.6 145.4,81.6 183.1,106.3 220.8,125.5 258.5,140.9 296.2,153.5
+            333.8,164 371.5,172.9 409.2,180.5 446.9,187 484.6,192.8 522.3,197.9 560,202.4"/>
+  <g fill="#4a5a63">
+    <circle cx="226.7" cy="157.5" r="4"/><circle cx="357.7" cy="186.9" r="4"/>
+    <circle cx="361.1" cy="190.4" r="4"/><circle cx="471.9" cy="200.1" r="4"/>
+    <circle cx="439.6" cy="200.1" r="4"/><circle cx="456.9" cy="190.4" r="4"/>
+    <circle cx="404" cy="192.3" r="4"/><circle cx="194.4" cy="154.8" r="4"/>
+    <circle cx="231.6" cy="98" r="4"/><circle cx="255.3" cy="77.1" r="4"/>
+    <circle cx="323.4" cy="154.1" r="4"/><circle cx="315.1" cy="161.8" r="4"/>
+    <circle cx="364.8" cy="119.3" r="4"/>
+  </g>
+  <!-- July 2026 position, now history -->
+  <circle cx="308.3" cy="159.9" r="4" fill="#7a6f60" opacity=".55"/>
+  <!-- September 2026: SUR 9.67%, SAFP $4.80 -->
+  <line x1="308.3" y1="159.9" x2="246" y2="144.4" stroke="#9c4a34" stroke-width="1.6"
+        stroke-dasharray="4 3"/>
+  <circle cx="246" cy="144.4" r="6.5" fill="#9c4a34" stroke="#fff" stroke-width="1.8"/>
+  <g font-size="9.5" fill="#4a5a63" text-anchor="middle">
+    <text x="226.7" y="148">'13</text><text x="194.4" y="145">'20</text>
+    <text x="231.6" y="88">'21</text><text x="255.3" y="67">'22</text>
+    <text x="364.8" y="110">'25</text><text x="471.9" y="192">'16</text>
+  </g>
+  <text x="330" y="176" font-size="9.5" fill="#7a6f60" text-anchor="middle">Jul &middot; 11.3%</text>
+  <text x="228" y="132" font-size="10.5" fill="#9c4a34" text-anchor="middle"
+        font-weight="bold">Sept &middot; 9.7%</text>
+  <text x="145" y="60" font-size="11" fill="#9c4a34" font-style="italic" text-anchor="middle">
+    danger zone</text>
+  <text x="145" y="74" font-size="11" fill="#9c4a34" font-style="italic" text-anchor="middle">
+    SUR &lt; 9%</text>
+  <g fill="#7a6f60" font-size="10.5" text-anchor="middle">
+    <text x="107.7" y="350">6%</text><text x="183.1" y="350">8%</text>
+    <text x="258.5" y="350">10%</text><text x="333.8" y="350">12%</text>
+    <text x="409.2" y="350">14%</text><text x="484.6" y="350">16%</text>
+    <text x="560" y="350">18%</text>
+  </g>
+  <text x="335" y="375" font-size="12" fill="#7a6f60" text-anchor="middle">
+    Stocks-to-use ratio</text>
+</svg>
+<figcaption><strong>Figure 2.</strong> Season-average farm price against stocks-to-use,
+2013/14&ndash;2026/27, with the fitted reciprocal curve. The 2021, 2022 and 2025 points sit
+well above the curve &mdash; those were the years when export demand and geopolitics, not
+stocks, set the price. That residual pattern is the honest limit of a one-variable model.
+</figcaption>
+</figure>
+
+<figure>
+<svg viewBox="0 0 860 360" xmlns="http://www.w3.org/2000/svg" font-family="Georgia, serif">
+  <g stroke="#ddd3c4" stroke-width="1">
+    <line x1="70" y1="300" x2="820" y2="300"/><line x1="70" y1="238.1" x2="820" y2="238.1"/>
+    <line x1="70" y1="176.2" x2="820" y2="176.2"/><line x1="70" y1="114.3" x2="820" y2="114.3"/>
+    <line x1="70" y1="52.4" x2="820" y2="52.4"/>
+  </g>
+  <g fill="#7a6f60" font-size="11" text-anchor="end">
+    <text x="62" y="304">$0.00</text><text x="62" y="242.1">$0.25</text>
+    <text x="62" y="180.2">$0.50</text><text x="62" y="118.3">$0.75</text>
+    <text x="62" y="56.4">$1.00</text>
+  </g>
+  <path d="M70,53.8 L121.4,119.1 L172.9,161.5 L224.3,190.6 L275.7,211.4 L327.1,226.7
+           L378.6,238.4 L430,247.6 L481.4,254.8 L532.9,260.6 L584.3,265.4 L635.7,269.3
+           L687.1,272.6 L738.6,275.4 L790,277.8 L790,300 L70,300 Z"
+        fill="#9c4a34" opacity=".12"/>
+  <polyline fill="none" stroke="#9c4a34" stroke-width="2.6"
+    points="70,53.8 121.4,119.1 172.9,161.5 224.3,190.6 275.7,211.4 327.1,226.7
+            378.6,238.4 430,247.6 481.4,254.8 532.9,260.6 584.3,265.4 635.7,269.3
+            687.1,272.6 738.6,275.4 790,277.8"/>
+  <g fill="#9c4a34">
+    <circle cx="70" cy="53.8" r="5"/><circle cx="224.3" cy="190.6" r="5"/>
+    <circle cx="378.6" cy="238.4" r="5"/><circle cx="584.3" cy="265.4" r="5"/>
+  </g>
+  <g font-size="12.5" fill="#9c4a34" font-weight="bold">
+    <text x="82" y="48">$0.99</text><text x="236" y="185">$0.44</text>
+    <text x="390" y="233">$0.25</text><text x="596" y="260">$0.14</text>
+  </g>
+  <!-- where the market actually sits: July vs September 2026 -->
+  <line x1="378.6" y1="238.4" x2="378.6" y2="300" stroke="#7a6f60" stroke-width="1.2"
+        stroke-dasharray="3 3"/>
+  <text x="378.6" y="60" font-size="10" fill="#7a6f60" text-anchor="middle">July '26</text>
+  <text x="378.6" y="72" font-size="10" fill="#7a6f60" text-anchor="middle">11.3%</text>
+  <line x1="258.7" y1="205.2" x2="258.7" y2="300" stroke="#9c4a34" stroke-width="2"/>
+  <circle cx="258.7" cy="205.2" r="6" fill="#9c4a34" stroke="#fff" stroke-width="1.8"/>
+  <text x="258.7" y="60" font-size="11" fill="#9c4a34" text-anchor="middle"
+        font-weight="bold">SEPT '26</text>
+  <text x="258.7" y="73" font-size="11" fill="#9c4a34" text-anchor="middle"
+        font-weight="bold">9.7% &rarr; $0.38</text>
+  <path d="M368,246 Q310,270 266,213" fill="none" stroke="#9c4a34" stroke-width="1.6"
+        stroke-dasharray="4 3" marker-end="url(#ar)"/>
+  <defs><marker id="ar" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+    <path d="M0,0 L6,3 L0,6 z" fill="#9c4a34"/></marker></defs>
+  <text x="300" y="288" font-size="10.5" fill="#9c4a34" text-anchor="middle"
+        font-style="italic">+37% sensitivity in two months</text>
+  <g fill="#7a6f60" font-size="10.5" text-anchor="middle">
+    <text x="70" y="320">6%</text><text x="172.9" y="320">8%</text>
+    <text x="275.7" y="320">10%</text><text x="378.6" y="320">12%</text>
+    <text x="481.4" y="320">14%</text><text x="584.3" y="320">16%</text>
+    <text x="687.1" y="320">18%</text><text x="790" y="320">20%</text>
+  </g>
+  <text x="445" y="345" font-size="12" fill="#7a6f60" text-anchor="middle">
+    Stocks-to-use ratio</text>
+</svg>
+<figcaption><strong>Figure 3.</strong> The price impact of a one-percentage-point change in
+stocks-to-use, computed as &minus;b/SUR&sup2;. At 16% stocks a one-point move is worth about
+14&cent;/bu and nobody notices. At 6% the same move is worth 99&cent; &mdash; seven times as
+much. This is the entire reason grain markets feel calm for years and then violent for
+months.</figcaption>
+</figure>
+
+<!-- ================= FIGURE 4 ================= -->
+<h2>IV &middot; What Actually Changed: The Demand Mix</h2>
+
+<p>The RFS did not just raise the price level. It changed the <em>shape</em> of the demand
+curve by inserting a large mandated block that does not respond to price. Ethanol now takes
+roughly <strong>5.6 billion bushels</strong> a year &mdash; about a third of the crop &mdash;
+and USDA's February 2026 baseline holds it flat through 2035.</p>
+
+<figure>
+<svg viewBox="0 0 860 230" xmlns="http://www.w3.org/2000/svg" font-family="Georgia, serif">
+  <text x="70" y="34" font-size="13" fill="#2b2620" font-weight="bold">
+    U.S. corn use, 2026/27 projection &mdash; 15,900 million bushels</text>
+  <rect x="70" y="52" width="286.8" height="54" fill="#4a5a63"/>
+  <rect x="356.8" y="52" width="267.7" height="54" fill="#a9761c"/>
+  <rect x="624.5" y="52" width="138.6" height="54" fill="#4a6b3f"/>
+  <rect x="763.1" y="52" width="66.9" height="54" fill="#b5852a"/>
+  <g fill="#fff" font-size="13" font-weight="bold" text-anchor="middle">
+    <text x="213" y="84">37.7%</text><text x="490" y="84">35.2%</text>
+    <text x="694" y="84">18.2%</text><text x="797" y="84">8.8%</text>
+  </g>
+  <g font-size="12" fill="#2b2620">
+    <rect x="70" y="132" width="13" height="13" fill="#4a5a63"/>
+    <text x="90" y="143">Feed &amp; residual &mdash; 6,000 mn bu</text>
+    <rect x="330" y="132" width="13" height="13" fill="#a9761c"/>
+    <text x="350" y="143">Ethanol &mdash; 5,600 mn bu</text>
+    <rect x="560" y="132" width="13" height="13" fill="#4a6b3f"/>
+    <text x="580" y="143">Exports &mdash; 2,900 mn bu</text>
+    <rect x="70" y="158" width="13" height="13" fill="#b5852a"/>
+    <text x="90" y="169">Other food, seed &amp; industrial &mdash; 1,400 mn bu
+    (this is where Kenyon's lives)</text>
+  </g>
+  <text x="70" y="200" font-size="11.5" fill="#7a6f60" font-style="italic">
+    Mandated and price-inelastic: 35%.  Slow-moving: 38%.  Volatile and geopolitical: 18%.
+    Price-insensitive and tiny: 9%.</text>
+</svg>
+<figcaption><strong>Figure 4.</strong> Approximate composition of U.S. corn use.
+Kenyon's sits in the smallest and least price-sensitive block &mdash; a price taker with no
+market power, but also the segment least damaged by high prices, because pass-through to a
+premium retail product is high.</figcaption>
+</figure>
+
+<!-- ================= FIGURE 5 ================= -->
+<h2>V &middot; What a Shock Actually Costs the Mill</h2>
+
+<p>Here is the number that should reframe the whole question. Take three states of the world
+&mdash; a loose market at 16% stocks, today at 9.7%, and the Crop Tour downside at 6.8% &mdash;
+run the model, apply a 4&times; flint premium, and convert to a pound of finished meal.</p>
+
+<figure>
+<svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg" font-family="Georgia, serif">
+  <g stroke="#ddd3c4" stroke-width="1">
+    <line x1="90" y1="320" x2="740" y2="320"/><line x1="90" y1="254.1" x2="740" y2="254.1"/>
+    <line x1="90" y1="188.2" x2="740" y2="188.2"/><line x1="90" y1="122.4" x2="740" y2="122.4"/>
+  </g>
+  <g fill="#7a6f60" font-size="11" text-anchor="end">
+    <text x="82" y="324">$0</text><text x="82" y="258.1">$2</text>
+    <text x="82" y="192.2">$4</text><text x="82" y="126.4">$6</text>
+  </g>
+  <line x1="90" y1="56.5" x2="740" y2="56.5" stroke="#2b2620" stroke-width="1.4"
+        stroke-dasharray="6 4"/>
+  <text x="745" y="60" font-size="11.5" fill="#2b2620">$8.00 retail</text>
+
+  <!-- bar 1: loose market -->
+  <rect x="140" y="310.7" width="110" height="9.3" fill="#a9761c"/>
+  <rect x="140" y="238.2" width="110" height="72.5" fill="#4a5a63"/>
+  <rect x="140" y="56.4" width="110" height="181.8" fill="#4a6b3f" opacity=".8"/>
+  <!-- bar 2: today, Sept 2026 -->
+  <rect x="350" y="306.9" width="110" height="13.1" fill="#a9761c"/>
+  <rect x="350" y="234.4" width="110" height="72.5" fill="#4a5a63"/>
+  <rect x="350" y="56.4" width="110" height="178" fill="#4a6b3f" opacity=".8"/>
+  <rect x="348" y="54.4" width="114" height="267.6" fill="none" stroke="#9c4a34"
+        stroke-width="2"/>
+  <!-- bar 3: crop tour downside -->
+  <rect x="560" y="302.8" width="110" height="17.2" fill="#a9761c"/>
+  <rect x="560" y="230.3" width="110" height="72.5" fill="#4a5a63"/>
+  <rect x="560" y="56.5" width="110" height="173.8" fill="#4a6b3f" opacity=".8"/>
+
+  <g font-size="12" fill="#2b2620" text-anchor="middle">
+    <text x="195" y="342" font-weight="bold">Loose market</text>
+    <text x="195" y="357" font-size="11" fill="#7a6f60">SUR 16% &middot; $3.55/bu</text>
+    <text x="405" y="342" font-weight="bold" fill="#9c4a34">Today &middot; Sept 2026</text>
+    <text x="405" y="357" font-size="11" fill="#7a6f60">SUR 9.7% &middot; $5.01/bu</text>
+    <text x="615" y="342" font-weight="bold">Crop Tour downside</text>
+    <text x="615" y="357" font-size="11" fill="#7a6f60">SUR 6.8% &middot; $6.59/bu</text>
+  </g>
+  <g font-size="11.5" font-weight="bold" fill="#a9761c" text-anchor="start">
+    <text x="258" y="318">28&cent; &middot; 3.5%</text>
+    <text x="468" y="315">40&cent; &middot; 5.0%</text>
+    <text x="678" y="311">52&cent; &middot; 6.5%</text>
+  </g>
+  <g font-size="12" fill="#fff" text-anchor="middle">
+    <text x="195" y="282">other cost $2.20</text>
+    <text x="195" y="152">gross margin</text>
+    <text x="405" y="152">gross margin</text>
+    <text x="615" y="152">gross margin</text>
+  </g>
+  <text x="90" y="388" font-size="11.5" fill="#7a6f60" font-style="italic">
+    Assumes 56 lb/bu, 90% mill yield (50.4 lb meal/bu), 4&times; flint premium,
+    $8.00/lb realised revenue, $2.20/lb all other cost.</text>
+</svg>
+<figcaption><strong>Figure 5.</strong> From a loose market to the Crop Tour downside case, flint
+corn cost per pound of finished meal moves from about 28&cent; to 52&cent; &mdash; a swing of
+<strong>24&cent; on an $8.00 pound, or 3.0%</strong>. The 25% rally that has already happened
+since June is worth about <strong>4&cent; a pound</strong>, or roughly $2,100 a year on a
+1,000-bushel requirement. A doubling of the corn price still costs the mill less than a single
+5% retail price increase recovers.</figcaption>
+</figure>
+
+<div class="box">
+<strong>Read Figure 5 twice.</strong> The worst corn shock in fifty years, fully passed through
+to Kenyon's flint contracts, costs about twenty cents a pound. A 10% reduction in shrink is
+worth roughly the same. A 5% retail price increase is worth twice as much. This is not an
+argument for ignoring the corn market &mdash; it is an argument for putting it in proportion,
+and spending management attention where the dollars actually are.
+</div>
+
+<!-- ================= PREPAREDNESS ================= -->
+<h2>VI &middot; Preparedness: Matching the Response to the Clock</h2>
+
+<p>Since the category of shock determines the warning time, and the warning time determines
+which responses are even physically possible, the preparedness plan writes itself.</p>
+
+<table>
+<thead><tr><th style="width:150px">Shock type</th><th style="width:96px">Warning</th>
+<th>What works within that window</th></tr></thead>
+<tbody>
+<tr><td><strong>Geopolitical</strong><br><span style="font-size:13px;color:#7a6f60">war, trade
+action, export ban</span></td><td class="num">Days</td>
+<td><strong>Only inventory you already hold.</strong> Nothing else operates fast enough. This
+is the entire case for the 12&ndash;18 month kernel reserve. Ukraine 2022 gave zero notice and
+moved the market 30% in eight weeks.</td></tr>
+
+<tr><td><strong>Weather / yield</strong><br><span style="font-size:13px;color:#7a6f60">drought,
+derecho, flood</span></td><td class="num">6&ndash;10 weeks</td>
+<td>Inventory, plus early warning: NOAA ENSO outlooks quarterly, the U.S. Drought Monitor
+weekly from June, and NASS Crop Progress condition ratings. A deteriorating July condition
+rating is the earliest reliable signal you will get. Even so, by the time it is visible the
+price has moved.</td></tr>
+
+<tr><td><strong>Macro / financial</strong><br><span style="font-size:13px;color:#7a6f60">dollar,
+crude, demand collapse</span></td><td class="num">1&ndash;6 months</td>
+<td>Watch DXY and WTI monthly. A weakening dollar with rising crude is the classic setup for
+a corn rally. Enough time to pull forward a scheduled purchase, not enough to build a reserve
+from nothing.</td></tr>
+
+<tr><td><strong>Export / demand surge</strong><br><span style="font-size:13px;color:#7a6f60">
+China, Mexico, record sales</span></td><td class="num">3&ndash;12 months</td>
+<td>The weekly FAS Export Sales report on Thursdays is the leading indicator, and it is free.
+Sales running consistently above USDA's target &mdash; as they have all through 2025/26 &mdash;
+means stocks will be revised down. Enough warning to extend contract length and add a grower.</td></tr>
+
+<tr><td><strong>Policy</strong><br><span style="font-size:13px;color:#7a6f60">RFS volumes, E15,
+farm bill</span></td><td class="num">12&ndash;36 months</td>
+<td>The most warning of any category, and the most consequential. Nationwide E15 would add
+roughly <strong>2.4 billion bushels</strong> of annual demand &mdash; a structural shift on the
+scale of the original RFS. Track EPA volume rules and farm bill progress. Response: lengthen
+contracts <em>before</em> it happens, and review retail pricing.</td></tr>
+
+<tr><td><strong>Grower loss</strong><br><span style="font-size:13px;color:#7a6f60">retirement,
+isolation failure</span></td><td class="num">Highly variable</td>
+<td><strong>This is the mill's real exposure and it is not on anyone's chart.</strong> One
+grower stepping away can remove a large share of a year's White Cap supply, and there is no
+spot market to replace identity-preserved flint. Response is structural: three to four
+independent growers on separate isolated parcels, multi-year floor-price contracts, and a
+seed-stock reserve.</td></tr>
+</tbody></table>
+
+<h3>The standing orders</h3>
+<ol>
+<li><strong>Hold 12&ndash;18 months of whole kernels.</strong> Not futures. Flint kernels store
+far better than milled meal; store the corn and mill to order. This single action covers the
+two shock categories that give you no warning, requires no derivatives account, no margin
+calls, and carries no basis risk. Manage moisture to 13&ndash;14% and monitor.</li>
+<li><strong>Get to three or four independent growers.</strong> Separate, isolated, geographically
+dispersed parcels. Highest-priority item in the entire analysis.</li>
+<li><strong>Buy commodity grain October&ndash;December.</strong> Seasonal lows cluster at
+harvest; highs cluster in the June&ndash;July weather-scare window. Buying in June because you
+ran out is the most expensive purchasing behaviour available.</li>
+<li><strong>Read the WASDE corn table on release day.</strong> Around the 10th&ndash;12th
+monthly, noon Eastern. You need exactly two numbers: ending stocks and total use. Four minutes.</li>
+<li><strong>Watch the Thursday FAS export sales number.</strong> The single best free leading
+indicator of a demand-driven tightening.</li>
+<li><strong>Track four internal numbers monthly.</strong> Cost per pound milled, shrink
+percentage, gross margin by channel, months of flint on hand.</li>
+<li><strong>Take small annual price increases.</strong> 3&ndash;5% yearly beats an
+uncomfortable 20% every fifth year, and the customer of a 330-year-old mill is buying
+provenance, not calories.</li>
+</ol>
+
+<div class="box warn">
+<strong>Where we are as of 25 September 2026.</strong> Stocks-to-use <strong>9.7% and
+falling</strong>. Model fair value $5.01/bu; USDA's season-average projection $4.80; December
+futures $5.29. Corn is up 25% off its June low, at a three-year high, and sits in the region
+where the curve steepens &mdash; a further one-point stock decline is now worth
+<strong>$0.38/bu</strong>, up 37% from July.
+<br><br>
+<strong>What follows, from the framework rather than from a view on price:</strong>
+<br><br>
+<strong>1. The seasonal still says October&ndash;December.</strong> Harvest supply arrives
+regardless of the rally. But it will be a higher-priced harvest low than last year's &mdash;
+do not wait past it hoping for 2024 prices.
+<br><br>
+<strong>2. Convexity now outranks percentile.</strong> December futures sit at roughly the
+<strong>79th percentile</strong> of the last fourteen years, which in isolation reads "wait." At
+9.7% stocks-to-use with a possible 470-million-bushel yield revision pending, that reading is
+wrong: the distribution is skewed hard to the upside and the cost of being caught short exceeds
+the cost of paying up.
+<br><br>
+<strong>3. Lock multi-year flint contracts this autumn.</strong> Growers read the same commodity
+prices you do. At $5.29 December corn, dent becomes a more attractive alternative for a flint
+grower &mdash; which raises the premium needed to hold acreage. Contracting now is cheaper than
+renegotiating in spring, before the 2027 planting decision is made.
+<br><br>
+<strong>4. Keep the cost impact in proportion.</strong> The whole move since July is worth about
+4&cent; a pound. Do not let a 25% headline drive a disproportionate response &mdash; but do not
+use its smallness as an excuse to skip the supply work. The exposure was never the price.
+<br><br>
+<strong>5. Watch three things through October.</strong> The 30 September <em>Grain Stocks</em>
+report, the October and November WASDE yield revisions as harvest either confirms or refutes the
+Crop Tour, and the weekly FAS export sales number. If exports hold at 3.3 billion while yield
+comes down, stocks-to-use goes below 9% and the curve gets steep fast.
+</div>
+
+<footer>
+<strong>Reproducibility.</strong> Every figure here is regenerated from live public data by
+<code>build_corn_report.py</code>, which pulls the macro series from FRED, refits the model,
+renders the charts with matplotlib, and assembles a formatted Word document. Run it after each
+WASDE release. The R script <code>corn_price_model.R</code> adds the multivariate extension,
+ARIMA layer, and walk-forward validation against the futures curve.
+<br><br>
+<strong>Data notes.</strong> Balance-sheet figures from USDA WASDE and the ERS Feed Grains
+Yearbook; 2024&ndash;2026 are current estimates and projections subject to revision. Futures
+levels cited are nearby contract highs as reported in the sources listed in the main report.
+Mill economics in Figure 5 use illustrative operating assumptions &mdash; replace them with
+Kenyon's actual yield, premium, and cost figures in the decision dashboard.
+</footer>
+
+</div></body></html>

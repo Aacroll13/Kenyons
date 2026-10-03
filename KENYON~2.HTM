@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kenyon's Grist Mill — Soap Economics Calculator</title>
+<style>
+  :root{--ink:#2b2620;--muted:#7a6f60;--line:#ddd3c4;--bg:#faf7f1;--panel:#fffdf9;
+        --gold:#a9761c;--green:#4a6b3f;--red:#9c4a34;--amber:#b5852a;--slate:#4a5a63;}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+       font:16px/1.55 Georgia,'Iowan Old Style',serif;padding:32px 20px 80px}
+  .wrap{max-width:1080px;margin:0 auto}
+  header{border-bottom:3px double var(--line);padding-bottom:20px;margin-bottom:28px}
+  h1{font-size:29px;margin:0 0 6px;letter-spacing:-.3px}
+  .sub{color:var(--muted);font-size:14.5px;font-style:italic}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(430px,1fr));gap:22px}
+  .panel{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:22px 24px}
+  .panel.wide{grid-column:1/-1}
+  .panel h2{font-size:16px;text-transform:uppercase;letter-spacing:1.4px;
+            margin:0 0 4px;color:var(--gold)}
+  .panel .hint{font-size:13px;color:var(--muted);margin:0 0 16px;font-style:italic}
+  label{display:block;font-size:13px;color:var(--muted);margin:11px 0 3px;
+        font-family:system-ui,sans-serif}
+  input{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:4px;
+        background:#fff;font:15px/1 system-ui,sans-serif;color:var(--ink)}
+  input:focus{outline:2px solid var(--gold);outline-offset:-1px}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+  .out{margin-top:18px;padding-top:16px;border-top:1px dashed var(--line)}
+  .line{display:flex;justify-content:space-between;align-items:baseline;padding:5px 0;font-size:14.5px}
+  .line span:first-child{color:var(--muted);font-family:system-ui,sans-serif;font-size:13.5px}
+  .line span:last-child{font-weight:700;font-variant-numeric:tabular-nums}
+  .line.tot{border-top:1px solid var(--line);margin-top:6px;padding-top:9px;font-size:15.5px}
+  .verdict{margin-top:16px;padding:14px 16px;border-radius:5px;font-weight:700;
+          font-size:15px;text-align:center;font-family:system-ui,sans-serif}
+  .good{background:#e8f0e4;color:var(--green);border:1px solid #b9cfae}
+  .bad{background:#f6e9e5;color:var(--red);border:1px solid #ddb9ac}
+  .mid{background:#f7efdd;color:var(--amber);border:1px solid #e0cda2}
+  .note{font-size:12.8px;color:var(--muted);margin-top:12px;line-height:1.5;
+        font-family:system-ui,sans-serif}
+  table{width:100%;border-collapse:collapse;margin-top:14px;font-size:14px}
+  th{text-align:right;font-size:11px;text-transform:uppercase;letter-spacing:.9px;
+     color:var(--muted);border-bottom:2px solid var(--line);padding:7px 8px;
+     font-family:system-ui,sans-serif}
+  th:first-child{text-align:left}
+  td{padding:9px 8px;border-bottom:1px solid var(--line);text-align:right;
+     font-variant-numeric:tabular-nums}
+  td:first-child{text-align:left;font-variant-numeric:normal}
+  tr:last-child td{border-bottom:none}
+  .win{background:#e8f0e4}
+  .pos{color:var(--green)} .neg{color:var(--red)}
+  .bar{height:22px;background:#ece5d8;border-radius:3px;overflow:hidden;display:flex;margin:4px 0}
+  .bar i{display:block;height:100%}
+  footer{margin-top:34px;padding-top:18px;border-top:1px solid var(--line);
+         font-size:13px;color:var(--muted)}
+  code{background:#f1ebe0;padding:1px 5px;border-radius:3px;font-size:13px}
+  h3{font-size:14px;text-transform:uppercase;letter-spacing:1px;color:var(--slate);
+     margin:20px 0 2px;font-family:system-ui,sans-serif}
+</style>
+</head>
+<body><div class="wrap">
+
+<header>
+  <h1>Soap Economics Calculator</h1>
+  <div class="sub">Kenyon's Grist Mill &middot; Usquepaugh, Rhode Island &middot; 25 September 2026
+  <br>Pre-loaded with 2026 industry cost benchmarks. Replace every figure with Kenyon's actuals.</div>
+</header>
+
+<div class="grid">
+
+  <!-- 1. MAKE VS BUY -->
+  <div class="panel wide">
+    <h2>1 &middot; Make It or Buy It</h2>
+    <p class="hint">The first real decision. In-house cold process versus private-label co-packing
+    using cornmeal you ship them.</p>
+
+    <div class="row">
+      <div>
+        <h3>Make in-house</h3>
+        <div class="row">
+          <div><label>Base oils / batch ($)</label><input id="m_oil" type="number" value="8.00" step="0.25"></div>
+          <div><label>Bars per batch</label><input id="m_bars" type="number" value="12" step="1"></div>
+        </div>
+        <div class="row">
+          <div><label>Lye + fragrance / batch ($)</label><input id="m_add" type="number" value="1.50" step="0.25"></div>
+          <div><label>Cornmeal / bar ($)</label><input id="m_corn" type="number" value="0.02" step="0.01"></div>
+        </div>
+        <div class="row">
+          <div><label>Labour / bar ($)</label><input id="m_lab" type="number" value="1.24" step="0.05"></div>
+          <div><label>Packaging / bar ($)</label><input id="m_pack" type="number" value="0.32" step="0.02"></div>
+        </div>
+      </div>
+      <div>
+        <h3>Private label</h3>
+        <div class="row">
+          <div><label>Base bar at MOQ ($)</label><input id="p_base" type="number" value="0.95" step="0.05"></div>
+          <div><label>Custom stamp ($)</label><input id="p_stamp" type="number" value="0.25" step="0.05"></div>
+        </div>
+        <div class="row">
+          <div><label>Cornmeal supplied ($)</label><input id="p_corn" type="number" value="0.02" step="0.01"></div>
+          <div><label>Packaging / bar ($)</label><input id="p_pack" type="number" value="0.28" step="0.02"></div>
+        </div>
+        <div class="row">
+          <div><label>MOQ (bars)</label><input id="p_moq" type="number" value="1000" step="100"></div>
+          <div><label>Retail price / bar ($)</label><input id="retail" type="number" value="12.00" step="0.50"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="out">
+      <table>
+        <thead><tr><th>Per bar</th><th>Make in-house</th><th>Private label</th><th>Difference</th></tr></thead>
+        <tbody>
+          <tr><td>Materials</td><td id="t_mm">—</td><td id="t_pm">—</td><td id="t_dm">—</td></tr>
+          <tr><td>Labour</td><td id="t_ml">—</td><td id="t_pl">—</td><td id="t_dl">—</td></tr>
+          <tr><td>Packaging</td><td id="t_mp">—</td><td id="t_pp">—</td><td id="t_dp">—</td></tr>
+          <tr><td><strong>Total cost</strong></td><td id="t_mc">—</td><td id="t_pc">—</td><td id="t_dc">—</td></tr>
+          <tr><td><strong>Gross margin</strong></td><td id="t_mg">—</td><td id="t_pg">—</td><td id="t_dg">—</td></tr>
+          <tr><td><strong>Gross margin %</strong></td><td id="t_mgp">—</td><td id="t_pgp">—</td><td id="t_dgp">—</td></tr>
+          <tr><td>Suggested wholesale (cost &times; 2.35)</td><td id="t_mw">—</td><td id="t_pw">—</td><td></td></tr>
+          <tr><td>Upfront cash at MOQ</td><td>one batch</td><td id="t_cash">—</td><td></td></tr>
+          <tr><td>Bars to sell to recover MOQ</td><td>—</td><td id="t_be">—</td><td></td></tr>
+        </tbody>
+      </table>
+      <div class="verdict" id="mb_v">—</div>
+      <p class="note" id="mb_n"></p>
+    </div>
+  </div>
+
+  <!-- 2. FREIGHT & ATTACH -->
+  <div class="panel wide">
+    <h2>2 &middot; The Freight Fix <span style="font-size:11px;color:var(--red)">&larr; the important one</span></h2>
+    <p class="hint">Cornmeal is heavy and cheap; soap is light and dear. Parcel cost rises with
+    weight far more slowly than soap's value does. This is what that's worth.</p>
+
+    <div class="row3">
+      <div><label>Cornmeal order value ($)</label><input id="f_meal" type="number" value="12.00" step="0.50"></div>
+      <div><label>Cornmeal weight (lb)</label><input id="f_mwt" type="number" value="2" step="0.5"></div>
+      <div><label>Cornmeal gross margin %</label><input id="f_mgm" type="number" value="55" step="1"></div>
+    </div>
+    <div class="row3">
+      <div><label>Bars added</label><input id="f_bars" type="number" value="3" step="1"></div>
+      <div><label>Weight per bar (lb)</label><input id="f_bwt" type="number" value="0.3" step="0.05"></div>
+      <div><label>Soap cost / bar ($)</label><input id="f_bc" type="number" value="1.50" step="0.05"></div>
+    </div>
+    <div class="row3">
+      <div><label>Parcel base cost ($)</label><input id="f_base" type="number" value="8.50" step="0.25"></div>
+      <div><label>Parcel cost per extra lb ($)</label><input id="f_per" type="number" value="0.85" step="0.05"></div>
+      <div><label>You charge customer shipping ($)</label><input id="f_chg" type="number" value="0" step="0.50"></div>
+    </div>
+
+    <div class="out">
+      <table>
+        <thead><tr><th></th><th>Cornmeal alone</th><th>+ soap</th><th>Change</th></tr></thead>
+        <tbody>
+          <tr><td>Order value</td><td id="g_v1">—</td><td id="g_v2">—</td><td id="g_vd">—</td></tr>
+          <tr><td>Weight</td><td id="g_w1">—</td><td id="g_w2">—</td><td id="g_wd">—</td></tr>
+          <tr><td>Parcel cost</td><td id="g_f1">—</td><td id="g_f2">—</td><td id="g_fd">—</td></tr>
+          <tr><td><strong>Shipping as % of order</strong></td><td id="g_p1">—</td><td id="g_p2">—</td><td id="g_pd">—</td></tr>
+          <tr><td>Gross profit before freight</td><td id="g_b1">—</td><td id="g_b2">—</td><td id="g_bd">—</td></tr>
+          <tr><td><strong>Net profit after freight</strong></td><td id="g_n1">—</td><td id="g_n2">—</td><td id="g_nd">—</td></tr>
+        </tbody>
+      </table>
+      <div class="bar"><i id="g_bar1" style="background:var(--red)"></i><i id="g_bar1b" style="background:var(--green)"></i></div>
+      <div class="note" style="margin-top:-2px">Cornmeal alone: red = freight, green = what's left</div>
+      <div class="bar"><i id="g_bar2" style="background:var(--red)"></i><i id="g_bar2b" style="background:var(--green)"></i></div>
+      <div class="note" style="margin-top:-2px">With soap attached</div>
+      <div class="verdict" id="f_v">—</div>
+      <p class="note" id="f_n"></p>
+    </div>
+  </div>
+
+  <!-- 3. PRICE LADDER -->
+  <div class="panel">
+    <h2>3 &middot; Price Ladder</h2>
+    <p class="hint">Three tiers. The top tier's job is to make the middle look sensible.</p>
+
+    <div class="row">
+      <div><label>Core bar price ($)</label><input id="l_core" type="number" value="12.00" step="0.50"></div>
+      <div><label>Core cost ($)</label><input id="l_corec" type="number" value="1.50" step="0.05"></div>
+    </div>
+    <div class="row">
+      <div><label>Heritage bar price ($)</label><input id="l_her" type="number" value="16.00" step="0.50"></div>
+      <div><label>Heritage cost ($)</label><input id="l_herc" type="number" value="2.90" step="0.05"></div>
+    </div>
+    <div class="row">
+      <div><label>Gift box price ($)</label><input id="l_gift" type="number" value="36.00" step="1"></div>
+      <div><label>Bars in box</label><input id="l_gn" type="number" value="3" step="1"></div>
+    </div>
+    <label>Box packaging cost ($)</label><input id="l_gbox" type="number" value="2.75" step="0.25">
+
+    <div class="out">
+      <table>
+        <thead><tr><th>Tier</th><th>Price</th><th>Cost</th><th>GM$</th><th>GM%</th></tr></thead>
+        <tbody>
+          <tr><td>Core</td><td id="l_1p">—</td><td id="l_1c">—</td><td id="l_1g">—</td><td id="l_1r">—</td></tr>
+          <tr><td>Heritage</td><td id="l_2p">—</td><td id="l_2c">—</td><td id="l_2g">—</td><td id="l_2r">—</td></tr>
+          <tr><td>Gift box</td><td id="l_3p">—</td><td id="l_3c">—</td><td id="l_3g">—</td><td id="l_3r">—</td></tr>
+        </tbody>
+      </table>
+      <div class="line"><span>Box price per bar vs. single</span><span id="l_ppb">—</span></div>
+      <div class="line"><span>Extra GM$ per transaction vs. 1 core bar</span><span id="l_lift">—</span></div>
+      <p class="note" id="l_n"></p>
+    </div>
+  </div>
+
+  <!-- 4. VOLUME & PAYBACK -->
+  <div class="panel">
+    <h2>4 &middot; Volume &amp; Payback</h2>
+    <p class="hint">What the trial has to do to be worth repeating.</p>
+
+    <div class="row">
+      <div><label>Annual mill-store visitors</label><input id="v_vis" type="number" value="6000" step="250"></div>
+      <div><label>Attach rate, in-store (%)</label><input id="v_ar" type="number" value="8" step="0.5"></div>
+    </div>
+    <div class="row">
+      <div><label>Annual DTC orders</label><input id="v_ord" type="number" value="900" step="25"></div>
+      <div><label>Attach rate, DTC (%)</label><input id="v_dr" type="number" value="20" step="1"></div>
+    </div>
+    <div class="row">
+      <div><label>Bars per attached sale</label><input id="v_bps" type="number" value="1.6" step="0.1"></div>
+      <div><label>Wholesale bars / yr</label><input id="v_wh" type="number" value="600" step="50"></div>
+    </div>
+    <div class="row">
+      <div><label>Wholesale price / bar ($)</label><input id="v_wp" type="number" value="6.00" step="0.25"></div>
+      <div><label>Setup cost — artwork, dies, samples ($)</label><input id="v_setup" type="number" value="1200" step="100"></div>
+    </div>
+
+    <div class="out">
+      <div class="line"><span>Retail bars / yr (store + DTC)</span><span id="v_rb">—</span></div>
+      <div class="line"><span>Total bars / yr</span><span id="v_tb">—</span></div>
+      <div class="line"><span>Revenue / yr</span><span id="v_rev">—</span></div>
+      <div class="line tot"><span>Gross profit / yr</span><span id="v_gp">—</span></div>
+      <div class="line"><span>Less setup (year 1)</span><span id="v_y1">—</span></div>
+      <div class="line"><span>Payback on setup</span><span id="v_pb">—</span></div>
+      <div class="line"><span>MOQ cover at this run rate</span><span id="v_cov">—</span></div>
+      <div class="verdict" id="v_v">—</div>
+      <p class="note" id="v_n"></p>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <strong>Benchmarks loaded.</strong> In-house costs from 2026 artisan soap cost surveys
+  (ingredients ~$0.77/bar, labour $1.24/bar, packaging $0.32/bar, true cost ≈ $2.33/bar);
+  private-label base bars $0.50&ndash;1.20 at MOQ with custom stamping ~+$0.25; MOQs 500 bars
+  (paper sleeve) to 3,000 (boxed), ~1,000 for a custom formula. Quality cold-process soap
+  retails $10&ndash;18/bar in 2026. Standard convention is <code>cost &times; 2.35 = wholesale</code>,
+  <code>wholesale &times; 2 = retail</code>.
+  <br><br>
+  <strong>Regulatory reminder.</strong> True soap &mdash; saponified oils sold <em>solely for
+  cleansing</em> &mdash; sits outside FDA cosmetic regulation and MoCRA. Claiming the bar
+  moisturises, exfoliates or soothes makes it a cosmetic; a therapeutic claim can make it an
+  unapproved drug. Nothing in this calculator changes that: price and margin are business
+  questions, label wording is a legal one. Sell the mill, the stones and the corn &mdash; not
+  what the soap does to skin.
+  <br><br>
+  <strong>Not legal or financial advice.</strong> Verify costs with actual supplier quotes and
+  label language with a regulatory specialist or the Handcrafted Soap &amp; Cosmetic Guild
+  before launch.
+</footer>
+
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+const n = id => parseFloat($(id).value) || 0;
+const usd = v => (v<0?"-$":"$") + Math.abs(v).toFixed(2);
+const usd0 = v => (v<0?"-$":"$") + Math.abs(v).toLocaleString(undefined,{maximumFractionDigits:0});
+const pc = v => v.toFixed(1) + "%";
+const sgn = v => (v>0?"+":"") + usd(v);
+function verdict(el,txt,cls){ el.textContent=txt; el.className="verdict "+cls; }
+function col(v){ return v>=0 ? 'pos' : 'neg'; }
+
+// ---- 1. MAKE VS BUY ----
+function makeBuy(){
+  const bars = Math.max(1, n('m_bars'));
+  const mMat = (n('m_oil')+n('m_add'))/bars + n('m_corn');
+  const mLab = n('m_lab'), mPack = n('m_pack');
+  const mCost = mMat+mLab+mPack;
+
+  const pMat = n('p_base')+n('p_stamp')+n('p_corn');
+  const pLab = 0, pPack = n('p_pack');
+  const pCost = pMat+pLab+pPack;
+
+  const R = n('retail');
+  const mGM = R-mCost, pGM = R-pCost;
+
+  $('t_mm').textContent=usd(mMat); $('t_pm').textContent=usd(pMat);
+  $('t_dm').innerHTML='<span class="'+col(mMat-pMat)+'">'+sgn(pMat-mMat)+'</span>';
+  $('t_ml').textContent=usd(mLab); $('t_pl').textContent=usd(pLab);
+  $('t_dl').innerHTML='<span class="pos">'+sgn(-mLab)+'</span>';
+  $('t_mp').textContent=usd(mPack); $('t_pp').textContent=usd(pPack);
+  $('t_dp').innerHTML='<span class="'+col(mPack-pPack)+'">'+sgn(pPack-mPack)+'</span>';
+  $('t_mc').innerHTML='<strong>'+usd(mCost)+'</strong>';
+  $('t_pc').innerHTML='<strong>'+usd(pCost)+'</strong>';
+  $('t_dc').innerHTML='<span class="'+col(mCost-pCost)+'"><strong>'+sgn(pCost-mCost)+'</strong></span>';
+  $('t_mg').textContent=usd(mGM); $('t_pg').textContent=usd(pGM);
+  $('t_dg').innerHTML='<span class="'+col(pGM-mGM)+'">'+sgn(pGM-mGM)+'</span>';
+  $('t_mgp').textContent=R>0?pc(100*mGM/R):"—";
+  $('t_pgp').textContent=R>0?pc(100*pGM/R):"—";
+  $('t_dgp').innerHTML=R>0?'<span class="'+col(pGM-mGM)+'">'+(pGM>mGM?"+":"")+
+      (100*(pGM-mGM)/R).toFixed(1)+' pp</span>':"—";
+  $('t_mw').textContent=usd(mCost*2.35); $('t_pw').textContent=usd(pCost*2.35);
+
+  const cash = pCost*n('p_moq');
+  $('t_cash').textContent=usd0(cash);
+  $('t_be').textContent = pGM>0 ? Math.ceil(cash/pGM).toLocaleString()+" bars" : "never";
+
+  const cheaper = pCost<mCost;
+  const hrs = (mLab*n('p_moq'))/22; // rough: labour $ at ~$22/hr equivalent
+  if(cheaper){
+    verdict($('mb_v'),"PRIVATE LABEL WINS — "+usd(mCost-pCost)+"/bar cheaper, and no labour","good");
+    $('mb_n').textContent =
+      "Co-packing is "+usd(mCost-pCost)+" cheaper per bar and eliminates roughly "+
+      hrs.toFixed(0)+" hours of labour across the "+n('p_moq').toLocaleString()+
+      "-bar run, plus the cure space, the equipment and the batch-failure risk. It costs "+
+      usd0(cash)+" upfront and you recover that after "+
+      (pGM>0?Math.ceil(cash/pGM).toLocaleString():"—")+" bars. "+
+      "Ship the co-packer your own stone-ground cornmeal and the provenance survives intact — "+
+      "but label it honestly: 'made with cornmeal stone-ground at Kenyon's since 1696' is true; "+
+      "'handmade at the mill' is not. Consider one small in-house hero SKU for the story.";
+  } else {
+    verdict($('mb_v'),"IN-HOUSE WINS on cost — "+usd(pCost-mCost)+"/bar","mid");
+    $('mb_n').textContent =
+      "At these inputs making it yourself is cheaper per bar. Before committing, check that the "+
+      "labour figure of "+usd(mLab)+"/bar is genuinely idle capacity — in a mill with an autumn "+
+      "demand peak, those hours usually have a better use. Also weigh the cure space, the "+
+      "equipment, and the fact that a failed batch is yours.";
+  }
+}
+
+// ---- 2. FREIGHT ----
+function freight(){
+  const mv=n('f_meal'), mw=n('f_mwt'), mgm=n('f_mgm')/100;
+  const nb=n('f_bars'), bw=n('f_bwt'), bc=n('f_bc');
+  const base=n('f_base'), per=n('f_per'), chg=n('f_chg');
+  const R=n('retail');
+
+  const parcel = w => base + Math.max(0, w-1)*per;
+
+  const v1=mv, w1=mw, f1=parcel(w1);
+  const v2=mv+nb*R, w2=mw+nb*bw, f2=parcel(w2);
+
+  const b1=mv*mgm, b2=b1+nb*(R-bc);
+  const net1=b1-f1+chg, net2=b2-f2+chg;
+
+  $('g_v1').textContent=usd(v1); $('g_v2').textContent=usd(v2);
+  $('g_vd').innerHTML='<span class="pos">'+sgn(v2-v1)+'</span>';
+  $('g_w1').textContent=w1.toFixed(1)+" lb"; $('g_w2').textContent=w2.toFixed(1)+" lb";
+  $('g_wd').textContent="+"+(w2-w1).toFixed(1)+" lb";
+  $('g_f1').textContent=usd(f1); $('g_f2').textContent=usd(f2);
+  $('g_fd').innerHTML='<span class="neg">'+sgn(f2-f1)+'</span>';
+  const p1=v1>0?100*f1/v1:0, p2=v2>0?100*f2/v2:0;
+  $('g_p1').innerHTML='<span class="'+(p1>35?'neg':'')+'"><strong>'+pc(p1)+'</strong></span>';
+  $('g_p2').innerHTML='<span class="'+(p2>35?'neg':'pos')+'"><strong>'+pc(p2)+'</strong></span>';
+  $('g_pd').innerHTML='<span class="pos">'+(p2-p1).toFixed(1)+' pp</span>';
+  $('g_b1').textContent=usd(b1); $('g_b2').textContent=usd(b2);
+  $('g_bd').innerHTML='<span class="pos">'+sgn(b2-b1)+'</span>';
+  $('g_n1').innerHTML='<span class="'+col(net1)+'"><strong>'+usd(net1)+'</strong></span>';
+  $('g_n2').innerHTML='<span class="'+col(net2)+'"><strong>'+usd(net2)+'</strong></span>';
+  $('g_nd').innerHTML='<span class="'+col(net2-net1)+'"><strong>'+sgn(net2-net1)+'</strong></span>';
+
+  const s1=Math.min(100,p1), s2=Math.min(100,p2);
+  $('g_bar1').style.width=s1+"%"; $('g_bar1b').style.width=(100-s1)+"%";
+  $('g_bar2').style.width=s2+"%"; $('g_bar2b').style.width=(100-s2)+"%";
+
+  if(net1<=0 && net2>0){
+    verdict($('f_v'),"SOAP TURNS A LOSS-MAKING ORDER PROFITABLE","good");
+    $('f_n').textContent="On its own this cornmeal order loses "+usd(Math.abs(net1))+
+      " after freight. Attaching "+nb+" bars makes it "+usd(net2)+" profitable — a swing of "+
+      usd(net2-net1)+". This is the single strongest argument for the soap line, and it holds "+
+      "whether or not soap ever becomes a large business on its own. Set a free-shipping "+
+      "threshold just above "+usd(v1)+" so customers are nudged to add bars.";
+  } else if(p2 < p1 - 5){
+    verdict($('f_v'),"FREIGHT BURDEN FALLS "+(p1-p2).toFixed(0)+" POINTS","good");
+    $('f_n').textContent="Shipping drops from "+pc(p1)+" of the order to "+pc(p2)+
+      ", and net profit rises "+usd(net2-net1)+". Parcel cost rises with weight far more "+
+      "slowly than soap's retail value does — every bar added improves the margin on the "+
+      "whole order. Set your free-shipping threshold just above "+usd(v1)+".";
+  } else {
+    verdict($('f_v'),"MODEST EFFECT AT THESE INPUTS","mid");
+    $('f_n').textContent="The freight benefit is small here — check that the parcel base cost "+
+      "and per-pound rate match your actual carrier invoice, since the effect scales with how "+
+      "punitive your base rate is.";
+  }
+}
+
+// ---- 3. PRICE LADDER ----
+function ladder(){
+  const cp=n('l_core'), cc=n('l_corec');
+  const hp=n('l_her'), hc=n('l_herc');
+  const gp=n('l_gift'), gn=Math.max(1,n('l_gn')), gb=n('l_gbox');
+  const gc=gn*cc+gb;
+
+  const rows=[[cp,cc,'1'],[hp,hc,'2'],[gp,gc,'3']];
+  rows.forEach(([p,c,i])=>{
+    $('l_'+i+'p').textContent=usd(p); $('l_'+i+'c').textContent=usd(c);
+    $('l_'+i+'g').textContent=usd(p-c);
+    $('l_'+i+'r').textContent=p>0?pc(100*(p-c)/p):"—";
+  });
+
+  const ppb=gp/gn;
+  $('l_ppb').innerHTML='<span class="'+(ppb<cp?'neg':'pos')+'">'+usd(ppb)+
+    ' ('+(ppb<cp?"":"+")+usd(ppb-cp)+')</span>';
+  const lift=(gp-gc)-(cp-cc);
+  $('l_lift').innerHTML='<span class="'+col(lift)+'">'+sgn(lift)+'</span>';
+
+  let msg = "The heritage bar at "+usd(hp)+" is "+(cp>0?(hp/cp).toFixed(2):"—")+
+    "× the core price; its job is anchoring, not volume. ";
+  if(ppb < cp){
+    msg += "The box prices at "+usd(ppb)+"/bar — a "+usd(cp-ppb)+" implicit discount. That is "+
+      "acceptable if it buys "+gn+" units in one transaction and a gift occasion, but push the "+
+      "box price up until per-bar is at or near "+usd(cp)+": the packaging itself supplies the "+
+      "perceived value, so you rarely need to discount as well.";
+  } else {
+    msg += "The box prices at "+usd(ppb)+"/bar — at or above the single-bar price, which is "+
+      "exactly right. Gift buyers pay for the presentation, not the per-unit maths. Each box "+
+      "earns "+usd(lift)+" more gross profit than a single core bar.";
+  }
+  $('l_n').textContent=msg;
+}
+
+// ---- 4. VOLUME ----
+function volume(){
+  const store=n('v_vis')*n('v_ar')/100*n('v_bps');
+  const dtc=n('v_ord')*n('v_dr')/100*n('v_bps');
+  const wh=n('v_wh'), wp=n('v_wp');
+  const R=n('retail');
+  const cost=n('p_base')+n('p_stamp')+n('p_corn')+n('p_pack');
+
+  const retailBars=store+dtc, total=retailBars+wh;
+  const rev=retailBars*R + wh*wp;
+  const gpv=retailBars*(R-cost) + wh*(wp-cost);
+  const setup=n('v_setup');
+  const y1=gpv-setup;
+  const moq=n('p_moq');
+
+  $('v_rb').textContent=Math.round(retailBars).toLocaleString()+" bars";
+  $('v_tb').textContent=Math.round(total).toLocaleString()+" bars";
+  $('v_rev').textContent=usd0(rev);
+  $('v_gp').innerHTML='<span class="'+col(gpv)+'"><strong>'+usd0(gpv)+'</strong></span>';
+  $('v_y1').innerHTML='<span class="'+col(y1)+'">'+usd0(y1)+'</span>';
+  $('v_pb').textContent = gpv>0 ? (setup/gpv*12).toFixed(1)+" months" : "never";
+  $('v_cov').textContent = total>0 ? (moq/total*12).toFixed(1)+" months of stock" : "—";
+
+  if(y1>0 && total>=moq*0.75){
+    verdict($('v_v'),"TRIAL CLEARS — "+usd0(y1)+" in year one","good");
+    $('v_n').textContent="At these attach rates the line covers its setup and returns "+
+      usd0(y1)+" in year one, and the MOQ turns in about "+(moq/total*12).toFixed(0)+
+      " months. Before scaling, confirm the attach rates with real data rather than these "+
+      "assumptions — attach rate is the variable the whole case rests on, and it is cheap "+
+      "to measure with a single trial run.";
+  } else if(y1>0){
+    verdict($('v_v'),"PROFITABLE, BUT THE MOQ IS TOO BIG","mid");
+    $('v_n').textContent="The economics work, but "+moq.toLocaleString()+" bars is "+
+      (moq/total*12).toFixed(0)+" months of stock at this run rate. Find a co-packer with a "+
+      "500-bar paper-sleeve minimum for the trial, or accept the carrying cost knowingly. "+
+      "Soap does not spoil, so slow stock is a cash-flow issue rather than a write-off risk.";
+  } else {
+    verdict($('v_v'),"DOES NOT CLEAR SETUP IN YEAR ONE","bad");
+    $('v_n').textContent="Year-one gross profit of "+usd0(gpv)+" does not cover "+usd0(setup)+
+      " of setup. Either the attach rates are too pessimistic, the setup cost is too high for "+
+      "a trial, or the volume is not there yet. Cut setup to the minimum — stock bar, paper "+
+      "sleeve, printed label, no custom die — and retest.";
+  }
+}
+
+function recalc(){ makeBuy(); freight(); ladder(); volume(); }
+document.querySelectorAll('input').forEach(el=>el.addEventListener('input',recalc));
+recalc();
+</script>
+</body></html>

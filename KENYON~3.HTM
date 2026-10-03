@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Soap &amp; Product Extensions — Charts | Kenyon's Grist Mill</title>
+<style>
+  :root{--ink:#2b2620;--muted:#7a6f60;--line:#ddd3c4;--bg:#faf7f1;--panel:#fffdf9;
+        --gold:#a9761c;--green:#4a6b3f;--red:#9c4a34;--amber:#b5852a;--slate:#4a5a63;}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+       font:16.5px/1.62 Georgia,'Iowan Old Style',serif;padding:40px 20px 90px}
+  .wrap{max-width:900px;margin:0 auto}
+  header{border-bottom:3px double var(--line);padding-bottom:22px;margin-bottom:34px}
+  h1{font-size:32px;margin:0 0 8px;letter-spacing:-.4px;line-height:1.2}
+  .sub{color:var(--muted);font-size:15px;font-style:italic}
+  h2{font-size:14px;text-transform:uppercase;letter-spacing:1.8px;color:var(--gold);
+     margin:52px 0 6px;padding-bottom:7px;border-bottom:1px solid var(--line)}
+  p{margin:0 0 15px}
+  .lede{font-size:18px;color:#3a352d}
+  figure{margin:28px 0 34px;background:var(--panel);border:1px solid var(--line);
+         border-radius:6px;padding:20px 22px 16px}
+  figcaption{font-size:13px;color:var(--muted);font-style:italic;margin-top:12px;
+             padding-top:10px;border-top:1px dashed var(--line);line-height:1.5}
+  svg{display:block;width:100%;height:auto}
+  .box{background:var(--panel);border-left:4px solid var(--gold);padding:18px 22px;
+       margin:26px 0;border-radius:0 5px 5px 0}
+  .box strong{color:var(--gold)}
+  .warn{border-left-color:var(--red)} .warn strong{color:var(--red)}
+  .good{border-left-color:var(--green)} .good strong{color:var(--green)}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:24px 0}
+  .stat{background:var(--panel);border:1px solid var(--line);border-radius:6px;
+        padding:16px 14px;text-align:center}
+  .stat .big{font-size:26px;font-weight:700;color:var(--gold);line-height:1.15;
+             font-variant-numeric:tabular-nums}
+  .stat .lbl{font-size:11.5px;color:var(--muted);margin-top:6px;line-height:1.35;
+             font-family:system-ui,sans-serif}
+  footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--line);
+         font-size:13.5px;color:var(--muted)}
+  code{background:#f1ebe0;padding:1.5px 6px;border-radius:3px;font-size:14px}
+  @media print{body{background:#fff;padding:0}figure{break-inside:avoid}}
+  @media (max-width:640px){.stats{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body><div class="wrap">
+
+<header>
+  <h1>Soap &amp; Product Extensions — The Charts</h1>
+  <div class="sub">Kenyon's Grist Mill &middot; Usquepaugh, Rhode Island &middot; grinding since 1696
+  <br>Visual companion to the soap and product-extension report &middot; 25 September 2026</div>
+</header>
+
+<p class="lede">Eight figures. The one that matters most is Figure 4 &mdash; it shows a cornmeal
+order that <em>loses money</em> after freight becoming solidly profitable when three bars of soap
+ride along. Everything else on this page is supporting evidence.</p>
+
+<!-- ===================== FIG 1 ===================== -->
+<h2>I &middot; Market Growth</h2>
+
+<p>Published estimates of the handmade soap market's <em>size</em> diverge by an order of
+magnitude, because firms define "handmade" differently. The <em>growth rate</em> does not diverge
+&mdash; every source lands between 6% and 7.5%. So use the growth rate and ignore the levels.</p>
+
+<figure>
+<svg viewBox="0 0 880 340" xmlns="http://www.w3.org/2000/svg" font-family="Georgia, serif">
+  <g stroke="#ddd3c4" stroke-width="1">
+    <line x1="355" y1="36" x2="355" y2="310"/><line x1="500" y1="36" x2="500" y2="310"/>
+    <line x1="645" y1="36" x2="645" y2="310"/><line x1="790" y1="36" x2="790" y2="310"/>
+  </g>
+  <line x1="210" y1="36" x2="210" y2="310" stroke="#2b2620" stroke-width="1.2"/>
+
+  <rect x="210" y="50"  width="543.8" height="26" fill="#a9761c"/>
+  <rect x="210" y="88"  width="493.0" height="26" fill="#a9761c"/>
+  <rect x="210" y="126" width="472.0" height="26" fill="#a9761c"/>
+  <rect x="210" y="164" width="431.4" height="26" fill="#a9761c"/>
+  <rect x="210" y="202" width="340.8" height="26" fill="#4a5a63"/>
+  <rect x="210" y="240" width="316.1" height="26" fill="#b5852a"/>
+  <rect x="210" y="278" width="145.0" height="26" fill="#ddd3c4"/>
+
+  <g font-size="12.5" fill="#2b2620" text-anchor="end">
+    <text x="202" y="68">Handmade soap · broad</text>
+    <text x="202" y="106">Organic soap</text>
+    <text x="202" y="144">Handmade soap · narrow</text>
+    <text x="202" y="182">Handmade soap · mid</text>
+    <text x="202" y="220">Cornmeal (for comparison)</text>
+    <text x="202" y="258">Bar soap, all types</text>
+    <text x="202" y="296">US GDP trend</text>
+  </g>
+  <g font-size="13" font-weight="bold" fill="#2b2620">
+    <text x="762" y="68">7.5%</text><text x="711" y="106">6.8%</text>
+    <text x="690" y="144">6.51%</text><text x="650" y="182">5.95%</text>
+    <text x="559" y="220" fill="#4a5a63">4.7%</text>
+    <text x="534" y="258" fill="#b5852a">4.36%</text>
+    <text x="363" y="296" fill="#7a6f60">~2%</text>
+  </g>
+  <g fill="#7a6f60" font-size="11" text-anchor="middle">
+    <text x="355" y="326">2%</text><text x="500" y="326">4%</text>
+    <text x="645" y="326">6%</text><text x="790" y="326">8%</text>
+  </g>
+  <text x="500" y="26" font-size="12.5" fill="#2b2620" text-anchor="middle" font-weight="bold">
+    Compound annual growth rate, current forecasts</text>
+</svg>
+<figcaption><strong>Figure 1.</strong> Every soap estimate beats the cornmeal market's ~4.7%, and
+the premium segments beat it by 1.5&ndash;3 percentage points. The three "handmade soap" bars are
+the same market measured three ways &mdash; $186M, $1.8B and $2.5B by scope &mdash; which is why
+the levels are unusable and the rates are not.</figcaption>
+</figure>
+
+<!-- ===================== FIG 2 ===================== -->
+<h2>II &middot; Why Soap, Physically</h2>
+
+<p>The corn analysis found Kenyon's core product structurally hard to sell at a distance:
+perishable, heavy relative to value, seasonal. Soap is the same brand asset with inverted physics.</p>
+
+<figure>
+<svg viewBox="0 0 880 380" xmlns="http://www.w3.org/2000/svg" font-family="Georgia, serif">
+  <text x="270" y="30" font-size="12.5" fill="#4a5a63" text-anchor="middle" font-weight="bold">
+    CORNMEAL</text>
+  <text x="600" y="30" font-size="12.5" fill="#4a6b3f" text-anchor="middle" font-weight="bold">
+    SOAP</text>
+  <line x1="430" y1="42" x2="430" y2="330" stroke="#2b2620" stroke-width="1.2"/>
+
+  <!-- Shelf life: 2 vs 5 -->
+  <rect x="361" y="52" width="64" height="24" fill="#4a5a63" opacity=".8"/>
+  <rect x="435" y="52" width="160" height="24" fill="#4a6b3f" opacity=".85"/>
+  <!-- Shrink resistance: 2 vs 5 -->
+  <rect x="361" y="90" width="64" height="24" fill="#4a5a63" opacity=".8"/>
+  <rect x="435" y="90" width="160" height="24" fill="#4a6b3f" opacity=".85"/>
+  <!-- Value per lb: 1 vs 5 -->
+  <rect x="393" y="128" width="32" height="24" fill="#9c4a34" opacity=".8"/>
+  <rect x="435" y="128" width="160" height="24" fill="#4a6b3f" opacity=".85"/>
+  <!-- Gross margin: 3 vs 5 -->
+  <rect x="329" y="166" width="96" height="24" fill="#4a5a63" opacity=".8"/>
+  <rect x="435" y="166" width="160" height="24" fill="#4a6b3f" opacity=".85"/>
+  <!-- Impulse/gift: 2 vs 5 -->
+  <rect x="361" y="204" width="64" height="24" fill="#4a5a63" opacity=".8"/>
+  <rect x="435" y="204" width="160" height="24" fill="#4a6b3f" opacity=".85"/>
+  <!-- Year-round demand: 3 vs 4 -->
+  <rect x="329" y="242" width="96" height="24" fill="#4a5a63" opacity=".8"/>
+  <rect x="435" y="242" width="128" height="24" fill="#4a6b3f" opacity=".85"/>
+  <!-- Regulatory simplicity: 3 vs 4 -->
+  <rect x="329" y="280" width="96" height="24" fill="#4a5a63" opacity=".8"/>
+  <rect x="435" y="280" width="128" height="24" fill="#4a6b3f" opacity=".85"/>
+
+  <g font-size="12" fill="#2b2620" text-anchor="middle">
+    <text x="430" y="68" style="paint-order:stroke" stroke="#fffdf9" stroke-width="5">Shelf life</text>
+    <text x="430" y="106" style="paint-order:stroke" stroke="#fffdf9" stroke-width="5">Resistance to shrink</text>
+    <text x="430" y="144" style="paint-order:stroke" stroke="#fffdf9" stroke-width="5">Value per pound shipped</text>
+    <text x="430" y="182" style="paint-order:stroke" stroke="#fffdf9" stroke-width="5">Gross margin</text>
+    <text x="430" y="220" style="paint-order:stroke" stroke="#fffdf9" stroke-width="5">Impulse &amp; gift appeal</text>
+    <text x="430" y="258" style="paint-order:stroke" stroke="#fffdf9" stroke-width="5">Year-round demand</text>
+    <text x="430" y="296" style="paint-order:stroke" stroke="#fffdf9" stroke-width="5">Regulatory simplicity</text>
+  </g>
+  <text x="330" y="348" font-size="11.5" fill="#9c4a34" font-style="italic" text-anchor="middle">
+    Value per pound is the freight problem — and the widest gap on the chart</text>
+  <text x="600" y="348" font-size="11.5" fill="#4a6b3f" font-style="italic" text-anchor="middle">
+    Soap wins or ties on all seven</text>
+</svg>
+<figcaption><strong>Figure 2.</strong> Qualitative scoring, 1&ndash;5, on the dimensions that
+determine whether a small manufacturer makes money on a shipped product. Soap is not a
+diversification away from the mill &mdash; it is the same provenance asset in a form that does not
+go rancid and does not punish you at the parcel counter.</figcaption>
+</figure>
+
+<!-- ===================== FIG 3 ===================== -->
+<h2>III &middot; Make It or Buy It</h2>
+
+<figure>
+<svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg" font-family="Georgia, serif">
+  <g stroke="#ddd3c4" stroke-width="1">
+    <line x1="90" y1="320" x2="720" y2="320"/><line x1="90" y1="255.4" x2="720" y2="255.4"/>
+    <line x1="90" y1="190.8" x2="720" y2="190.8"/><line x1="90" y1="126.2" x2="720" y2="126.2"/>
+  </g>
+  <g fill="#7a6f60" font-size="11" text-anchor="end">
+    <text x="82" y="324">$0</text><text x="82" y="259.4">$3</text>
+    <text x="82" y="194.8">$6</text><text x="82" y="130.2">$9</text>
+  </g>
+  <line x1="90" y1="61.5" x2="720" y2="61.5" stroke="#2b2620" stroke-width="1.4"
+        stroke-dasharray="6 4"/>
+  <text x="725" y="65" font-size="11.5" fill="#2b2620">$12.00</text>
+  <text x="725" y="78" font-size="10.5" fill="#7a6f60">retail</text>
+
+  <!-- MAKE -->
+  <rect x="180" y="302.6" width="130" height="17.4" fill="#a9761c"/>
+  <rect x="180" y="275.9" width="130" height="26.7" fill="#9c4a34"/>
+  <rect x="180" y="269.0" width="130" height="6.9" fill="#4a5a63"/>
+  <rect x="180" y="61.6" width="130" height="207.4" fill="#4a6b3f" opacity=".8"/>
+  <!-- BUY -->
+  <rect x="430" y="293.7" width="130" height="26.3" fill="#a9761c"/>
+  <rect x="430" y="287.7" width="130" height="6.0" fill="#4a5a63"/>
+  <rect x="430" y="61.5" width="130" height="226.2" fill="#4a6b3f" opacity=".8"/>
+  <rect x="428" y="59.5" width="134" height="262.5" fill="none" stroke="#4a6b3f" stroke-width="2"/>
+
+  <g font-size="12.5" fill="#2b2620" text-anchor="middle">
+    <text x="245" y="342" font-weight="bold">Make in-house</text>
+    <text x="245" y="357" font-size="11" fill="#7a6f60">$2.37/bar &middot; 80.2% margin</text>
+    <text x="495" y="342" font-weight="bold" fill="#4a6b3f">Private label</text>
+    <text x="495" y="357" font-size="11" fill="#7a6f60">$1.50/bar &middot; 87.5% margin</text>
+  </g>
+  <g font-size="12" fill="#fff" text-anchor="middle">
+    <text x="245" y="170">gross margin $9.63</text>
+    <text x="495" y="170">gross margin $10.50</text>
+  </g>
+  <g font-size="11.5" text-anchor="start">
+    <text x="318" y="314" fill="#a9761c" font-weight="bold">materials $0.81</text>
+    <text x="318" y="294" fill="#9c4a34" font-weight="bold">labour $1.24</text>
+    <text x="318" y="276" fill="#4a5a63" font-weight="bold">packaging $0.32</text>
+    <text x="568" y="310" fill="#a9761c" font-weight="bold">materials $1.22</text>
+    <text x="568" y="292" fill="#4a5a63" font-weight="bold">packaging $0.28</text>
+    <text x="568" y="274" fill="#4a6b3f" font-weight="bold">labour $0.00</text>
+  </g>
+  <path d="M348,286 Q400,250 560,268" fill="none" stroke="#4a6b3f" stroke-width="1.6"
+        stroke-dasharray="4 3"/>
+  <text x="455" y="245" font-size="11" fill="#4a6b3f" text-anchor="middle" font-style="italic">
+    the whole difference is labour</text>
+  <text x="90" y="388" font-size="11.5" fill="#7a6f60" font-style="italic">
+    Benchmarks: 12-bar cold-process batch, ~4.5 oz bars. Private label assumes $0.95 base bar at
+    MOQ + $0.25 custom stamp + Kenyon's own cornmeal.</text>
+</svg>
+<figcaption><strong>Figure 3.</strong> Private label costs 87 cents less per bar and earns 7.3
+percentage points more margin &mdash; and virtually the entire gap is the $1.24/bar of labour.
+Those hours are not free even in a family business; in a mill with an autumn demand peak their
+alternative use is usually "milling and shipping the orders you already have." Ship the co-packer
+your own stone-ground cornmeal and the provenance survives; only the phrase "handmade at the mill"
+does not.</figcaption>
+</figure>
+
+<!-- ===================== FIG 4 — THE HERO ===================== -->
+<h2>IV &middot; The Freight Fix <span style="font-size:11px;color:#9c4a34">← the important one</span></h2>
+
+<p>Cornmeal is dense, cheap and shipping-hostile. Soap is light and dear. Parcel cost rises with
+weight far more slowly than soap's retail value does, so <strong>every bar added improves the
+margin on the entire order.</strong></p>
+
+<figure>
+<svg viewBox="0 0 880 420" xmlns="http://www.w3.org/2000/svg" font-family="Georgia, serif">
+  <!-- SCENARIO A -->
+  <text x="150" y="40" font-size="13" fill="#2b2620" font-weight="bold">CORNMEAL ALONE</text>
+  <text x="150" y="57" font-size="11.5" fill="#7a6f60">One 2 lb bag · $12 order</text>
+
+  <rect x="150" y="72" width="69.1" height="38" fill="#4a5a63"/>
+  <rect x="219.1" y="72" width="119.7" height="38" fill="#9c4a34"/>
+  <line x1="303.6" y1="62" x2="303.6" y2="124" stroke="#2b2620" stroke-width="2.4"/>
+  <text x="303.6" y="56" font-size="11.5" fill="#2b2620" text-anchor="middle" font-weight="bold">
+    revenue $12</text>
+  <rect x="303.6" y="72" width="35.2" height="38" fill="#9c4a34" opacity=".35"/>
+  <text x="185" y="96" font-size="11.5" fill="#fff" text-anchor="middle">COGS $5.40</text>
+  <text x="279" y="96" font-size="11.5" fill="#fff" text-anchor="middle">freight $9.35</text>
+  <text x="348" y="96" font-size="12.5" fill="#9c4a34" font-weight="bold">LOSS −$2.75</text>
+  <text x="348" y="112" font-size="11" fill="#9c4a34" font-style="italic">freight = 78% of order</text>
+
+  <!-- SCENARIO B -->
+  <text x="150" y="190" font-size="13" fill="#2b2620" font-weight="bold">CORNMEAL + 3 BARS OF SOAP</text>
+  <text x="150" y="207" font-size="11.5" fill="#7a6f60">2.9 lb · $48 order</text>
+
+  <rect x="150" y="222" width="126.7" height="38" fill="#4a5a63"/>
+  <rect x="276.7" y="222" width="129.5" height="38" fill="#9c4a34"/>
+  <rect x="406.2" y="222" width="358.2" height="38" fill="#4a6b3f" opacity=".85"/>
+  <line x1="764.4" y1="212" x2="764.4" y2="274" stroke="#2b2620" stroke-width="2.4"/>
+  <text x="764.4" y="206" font-size="11.5" fill="#2b2620" text-anchor="end" font-weight="bold">
+    revenue $48</text>
+  <text x="213" y="246" font-size="11.5" fill="#fff" text-anchor="middle">COGS $9.90</text>
+  <text x="341" y="246" font-size="11.5" fill="#fff" text-anchor="middle">freight $10.12</text>
+  <text x="585" y="246" font-size="13" fill="#fff" text-anchor="middle" font-weight="bold">
+    NET PROFIT $27.99</text>
+  <text x="585" y="276" font-size="11" fill="#4a6b3f" text-anchor="middle" font-style="italic">
+    freight = 21% of order</text>
+
+  <!-- swing callout -->
+  <path d="M340,130 Q330,175 340,214" fill="none" stroke="#4a6b3f" stroke-width="2"
+        stroke-dasharray="5 4" marker-end="url(#a2)"/>
+  <defs><marker id="a2" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto">
+    <path d="M0,0 L6,3 L0,6 z" fill="#4a6b3f"/></marker></defs>
+  <text x="360" y="175" font-size="14" fill="#4a6b3f" font-weight="bold">
+    +$30.74 swing on one order</text>
+
+  <!-- scale -->
+  <g stroke="#ddd3c4" stroke-width="1">
+    <line x1="150" y1="300" x2="790" y2="300"/>
+  </g>
+  <g fill="#7a6f60" font-size="10.5" text-anchor="middle">
+    <text x="150" y="316">$0</text><text x="278" y="316">$10</text>
+    <text x="406" y="316">$20</text><text x="534" y="316">$30</text>
+    <text x="662" y="316">$40</text><text x="790" y="316">$50</text>
+  </g>
+
+  <rect x="150" y="338" width="640" height="62" fill="#f6e9e5" stroke="#ddb9ac" rx="4"/>
+  <text x="166" y="360" font-size="12.5" fill="#9c4a34" font-weight="bold">
+    Weight rose 45%. Parcel cost rose 8%. Order value rose 300%.</text>
+  <text x="166" y="379" font-size="12" fill="#2b2620">
+    That asymmetry is the whole argument. Set a free-shipping threshold just above $12 so</text>
+  <text x="166" y="394" font-size="12" fill="#2b2620">
+    customers are nudged to add bars — it converts this chart into revenue.</text>
+</svg>
+<figcaption><strong>Figure 4.</strong> Illustrative parcel rates ($8.50 base + $0.85/lb) and 55%
+gross margin on cornmeal &mdash; substitute Kenyon's actual carrier invoice in the calculator. The
+mechanism does not depend on the exact figures: parcel pricing is roughly flat in weight over short
+ranges while soap's value per pound is high. <strong>If soap did nothing but make the existing
+cornmeal e-commerce business profitable, it would be worth launching.</strong> Everything it earns
+on its own is upside.</figcaption>
+</figure>
+
+<!-- ===================== FIG 5 ===================== -->
+<h2>V &middot; The Price Ladder</h2>
+
+<figure>
+<svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg" font-family="Georgia, serif">
+  <g stroke="#ddd3c4" stroke-width="1">
+    <line x1="100" y1="320" x2="720" y2="320"/><line x1="100" y1="252.5" x2="720" y2="252.5"/>
+    <line x1="100" y1="185" x2="720" y2="185"/><line x1="100" y1="117.5" x2="720" y2="117.5"/>
+    <line x1="100" y1="50" x2="720" y2="50"/>
+  </g>
+  <g fill="#7a6f60" font-size="11" text-anchor="end">
+    <text x="92" y="324">$0</text><text x="92" y="256.5">$10</text>
+    <text x="92" y="189">$20</text><text x="92" y="121.5">$30</text>
+    <text x="92" y="54">$40</text>
+  </g>
+
+  <!-- Core -->
+  <rect x="150" y="239" width="120" height="81" fill="#4a6b3f" opacity=".8"/>
+  <rect x="150" y="309.9" width="120" height="10.1" fill="#a9761c"/>
+  <!-- Heritage -->
+  <rect x="340" y="212" width="120" height="108" fill="#4a6b3f" opacity=".8"/>
+  <rect x="340" y="300.4" width="120" height="19.6" fill="#a9761c"/>
+  <!-- Gift box -->
+  <rect x="530" y="77" width="120" height="243" fill="#4a6b3f" opacity=".8"/>
+  <rect x="530" y="271.1" width="120" height="48.9" fill="#a9761c"/>
+
+  <g font-size="14" fill="#2b2620" text-anchor="middle" font-weight="bold">
+    <text x="210" y="230">$12</text><text x="400" y="203">$16</text><text x="590" y="68">$36</text>
+  </g>
+  <g font-size="12.5" fill="#2b2620" text-anchor="middle">
+    <text x="210" y="344" font-weight="bold">CORE</text>
+    <text x="210" y="360" font-size="11" fill="#7a6f60">cornmeal bar</text>
+    <text x="210" y="374" font-size="11" fill="#4a6b3f">GM 87.5%</text>
+    <text x="400" y="344" font-weight="bold">HERITAGE</text>
+    <text x="400" y="360" font-size="11" fill="#7a6f60">1696 tallow &amp; flint</text>
+    <text x="400" y="374" font-size="11" fill="#4a6b3f">GM 81.9%</text>
+    <text x="590" y="344" font-weight="bold">GIFT BOX</text>
+    <text x="590" y="360" font-size="11" fill="#7a6f60">3 bars · $12/bar</text>
+    <text x="590" y="374" font-size="11" fill="#4a6b3f">GM 79.9%</text>
+  </g>
+  <text x="678" y="200" font-size="12" fill="#4a6b3f" font-weight="bold">+$18.25</text>
+  <text x="678" y="215" font-size="11" fill="#4a6b3f">gross profit vs.</text>
+  <text x="678" y="228" font-size="11" fill="#4a6b3f">one core bar</text>
+  <path d="M290,250 Q320,232 336,222" fill="none" stroke="#7a6f60" stroke-width="1.4"
+        stroke-dasharray="3 3"/>
+  <text x="313" y="262" font-size="10.5" fill="#7a6f60" font-style="italic" text-anchor="middle">
+    anchors</text>
+  <text x="100" y="396" font-size="11.5" fill="#7a6f60" font-style="italic">
+    Gold = cost. Green = gross margin. The heritage bar's job is anchoring, not volume.</text>
+</svg>
+<figcaption><strong>Figure 5.</strong> Three tiers, not one price. The $16 heritage bar exists to
+make the $12 bar look like the sensible choice &mdash; anchoring is the cheapest pricing tool
+available. The gift box prices at exactly $12/bar, which is right: <strong>the packaging supplies
+the perceived value, so you don't need to discount as well.</strong> Bundling raises realised price
+per unit while feeling generous; discounting lowers it while feeling generous.</figcaption>
+</figure>
+
+<!-- ===================== FIG 6 ===================== -->
+<h2>VI &middot; The Tallow Signal</h2>
+
+<p>Worth flagging separately because the numbers are unusual, and because tallow is the
+<em>historically correct</em> soap fat for a 17th-century New England mill village. The most
+authentic product Kenyon's could make is also, right now, the most algorithmically favoured.</p>
+
+<div class="stats">
+  <div class="stat"><div class="big">+17,400</div>
+    <div class="lbl">year-over-year rise in "beef tallow for skin" searches</div></div>
+  <div class="stat"><div class="big">800M+</div>
+    <div class="lbl">views on #tallowskincare across TikTok</div></div>
+  <div class="stat"><div class="big">+340%</div>
+    <div class="lbl">new tallow skincare listings since 2023</div></div>
+  <div class="stat"><div class="big">5.84%</div>
+    <div class="lbl">CAGR, tallow balm market, $290M 2026 → $460M 2034</div></div>
+</div>
+
+<div class="box warn">
+<strong>But read the caveat.</strong> Trends decay, and this one is riding social media rather than
+a structural shift like the plastic-free move behind bar soap generally. Treat tallow as a
+<em>reason to launch the heritage bar now rather than in two years</em> &mdash; not as the
+foundation of the business. Also note: a tallow <em>balm</em> is a cosmetic, not soap, so full
+cosmetic rules attach. A tallow <em>soap</em> sold for cleansing does not.
+</div>
+
+<!-- ===================== FIG 7 ===================== -->
+<h2>VII &middot; Ranking the Extensions</h2>
+
+<figure>
+<svg viewBox="0 0 880 420" xmlns="http://www.w3.org/2000/svg" font-family="Georgia, serif">
+  <rect x="120" y="60" width="330" height="135" fill="#4a6b3f" opacity=".07"/>
+  <text x="285" y="80" font-size="11.5" fill="#4a6b3f" text-anchor="middle" font-style="italic"
+        font-weight="bold">DO THESE FIRST</text>
+
+  <g stroke="#ddd3c4" stroke-width="1">
+    <line x1="120" y1="330" x2="780" y2="330"/><line x1="120" y1="60" x2="120" y2="330"/>
+  </g>
+  <line x1="450" y1="60" x2="450" y2="330" stroke="#ddd3c4" stroke-width="1" stroke-dasharray="4 4"/>
+  <line x1="120" y1="195" x2="780" y2="195" stroke="#ddd3c4" stroke-width="1" stroke-dasharray="4 4"/>
+
+  <!-- bubbles -->
+  <circle cx="193.3" cy="90"  r="20" fill="#4a6b3f" opacity=".85"/>
+  <circle cx="340"   cy="90"  r="18" fill="#4a6b3f" opacity=".85"/>
+  <circle cx="413.3" cy="120" r="19" fill="#a9761c" opacity=".9"/>
+  <circle cx="193.3" cy="180" r="14" fill="#4a6b3f" opacity=".7"/>
+  <circle cx="633.3" cy="150" r="14" fill="#b5852a" opacity=".8"/>
+  <circle cx="340"   cy="210" r="12" fill="#4a5a63" opacity=".7"/>
+  <circle cx="266.7" cy="240" r="10" fill="#4a5a63" opacity=".6"/>
+  <circle cx="413.3" cy="240" r="10" fill="#4a5a63" opacity=".5"/>
+  <circle cx="340"   cy="270" r="10" fill="#4a5a63" opacity=".5"/>
+  <circle cx="486.7" cy="300" r="11" fill="#9c4a34" opacity=".7"/>
+
+  <g font-size="11.5" fill="#2b2620">
+    <text x="219" y="86" font-weight="bold">Gift boxes</text>
+    <text x="219" y="99" font-size="10" fill="#7a6f60">no new mfg</text>
+    <text x="362" y="88" font-weight="bold">Tours &amp; events</text>
+    <text x="436" y="118" font-weight="bold" fill="#a9761c">Cornmeal soap</text>
+    <text x="436" y="131" font-size="10" fill="#7a6f60">this report</text>
+    <text x="211" y="184" font-weight="bold">Merchandise</text>
+    <text x="651" y="148" font-weight="bold">Tallow balm</text>
+    <text x="651" y="161" font-size="10" fill="#9c4a34">cosmetic rules</text>
+    <text x="356" y="214">Heritage mixes</text>
+    <text x="280" y="244">Cookbook</text>
+    <text x="427" y="244">Candles</text>
+    <text x="354" y="274">Grits &amp; polenta</text>
+    <text x="501" y="304" fill="#9c4a34">Bulk foodservice</text>
+    <text x="501" y="316" font-size="10" fill="#9c4a34">avoid</text>
+  </g>
+
+  <text x="450" y="356" font-size="12.5" fill="#7a6f60" text-anchor="middle">
+    Effort, capital and complexity →</text>
+  <text x="34" y="195" font-size="12.5" fill="#7a6f60" text-anchor="middle"
+        transform="rotate(-90 34 195)">Return &amp; margin →</text>
+  <text x="130" y="52" font-size="10.5" fill="#7a6f60">Bubble size ≈ strategic value to the brand</text>
+</svg>
+<figcaption><strong>Figure 6.</strong> Ten candidate extensions plotted on effort against return.
+<strong>The highest-return item is not a product at all</strong> &mdash; curated gift boxes
+assembled from goods Kenyon's already makes, with no new manufacturing, no new regulation and no
+new inventory risk. Tours and events sit beside it: near-zero COGS, and every attendee is a retail
+customer standing inside the store. Soap is the best genuinely <em>new</em> product. Bulk
+foodservice cornmeal is the one to decline &mdash; lowest margin, most price pressure, and it
+anchors down the value of the branded line.</figcaption>
+</figure>
+
+<!-- ===================== FIG 8 ===================== -->
+<h2>VIII &middot; Sequencing</h2>
+
+<figure>
+<svg viewBox="0 0 880 340" xmlns="http://www.w3.org/2000/svg" font-family="Georgia, serif">
+  <g stroke="#ddd3c4" stroke-width="1">
+    <line x1="300" y1="44" x2="300" y2="300"/><line x1="420" y1="44" x2="420" y2="300"/>
+    <line x1="540" y1="44" x2="540" y2="300"/><line x1="660" y1="44" x2="660" y2="300"/>
+    <line x1="780" y1="44" x2="780" y2="300"/>
+  </g>
+  <g fill="#7a6f60" font-size="11" text-anchor="middle">
+    <text x="240" y="36">now</text><text x="360" y="36">Q4 '26</text>
+    <text x="480" y="36">Q1 '27</text><text x="600" y="36">Q2 '27</text>
+    <text x="720" y="36">Q3 '27</text>
+  </g>
+
+  <rect x="180" y="52"  width="170" height="24" fill="#4a6b3f" rx="3"/>
+  <rect x="180" y="86"  width="110" height="24" fill="#4a6b3f" rx="3"/>
+  <rect x="180" y="120" width="230" height="24" fill="#4a6b3f" opacity=".7" rx="3"/>
+  <rect x="300" y="154" width="240" height="24" fill="#a9761c" rx="3"/>
+  <rect x="540" y="188" width="180" height="24" fill="#a9761c" opacity=".75" rx="3"/>
+  <rect x="540" y="222" width="240" height="24" fill="#4a5a63" opacity=".75" rx="3"/>
+  <rect x="660" y="256" width="120" height="24" fill="#b5852a" opacity=".75" rx="3"/>
+
+  <g font-size="12" fill="#2b2620" text-anchor="end">
+    <text x="172" y="69">Gift boxes from existing goods</text>
+    <text x="172" y="103">Free-shipping threshold</text>
+    <text x="172" y="137">Merchandise (print-on-demand)</text>
+    <text x="292" y="171">Private-label soap trial · 500–1,000 bars</text>
+    <text x="532" y="205">Heritage tier · in-house hero bar</text>
+    <text x="532" y="239">Inn &amp; B&amp;B amenity program</text>
+    <text x="652" y="273">Tallow balm (w/ regulatory advice)</text>
+  </g>
+  <text x="185" y="316" font-size="11.5" fill="#4a6b3f" font-style="italic">
+    Green = no new manufacturing or regulation. Gold = new product. Slate = new channel.</text>
+</svg>
+<figcaption><strong>Figure 7.</strong> The first three items need no new manufacturing, no new
+regulatory category and almost no capital &mdash; and they build the gift channel that soap will
+later occupy. The soap trial deliberately waits one quarter so it launches into a channel that
+already exists.</figcaption>
+</figure>
+
+<div class="box good">
+<strong>Three things to do, in order.</strong>
+<br><br>
+<strong>1. Build gift boxes from what you already make.</strong> Weeks of work, immediate lift in
+average order value, and it creates the channel soap will occupy.
+<br><br>
+<strong>2. Set the free-shipping threshold just above average order value.</strong> One number.
+Converts Figure 4 into revenue, measurable within a month.
+<br><br>
+<strong>3. Run a 500–1,000 bar private-label soap trial using Kenyon's own cornmeal</strong>,
+mill store and DTC attach only. Measure attach rate and reorder rate before committing to anything
+larger.
+<br><br>
+And one thing not to do: <strong>do not make skin-benefit claims.</strong> True soap sold solely
+for cleansing sits outside FDA cosmetic regulation and MoCRA entirely. That exemption is worth more
+than any marketing copy it would buy — and the provenance story you should tell instead is the
+better story anyway.
+</div>
+
+<footer>
+<strong>Method.</strong> Figures 1, 3, 5 and 6 use published 2026 industry benchmarks cited in the
+main report. Figure 2 is qualitative scoring, shown as such. Figure 4 uses illustrative parcel
+rates &mdash; the mechanism holds across any realistic rate card, but substitute Kenyon's actual
+carrier invoice in <code>Kenyons_Soap_Economics_Calculator.html</code>, which recomputes every
+number on this page from your own inputs.
+<br><br>
+<strong>Not legal or financial advice.</strong> Verify supplier costs with real quotes and label
+language with a regulatory specialist or the Handcrafted Soap &amp; Cosmetic Guild before launch.
+Full source list in <code>Kenyons_Soap_and_Product_Extension_Report.md</code>.
+</footer>
+
+</div></body></html>
